@@ -1,4 +1,4 @@
-// componentes estilizados da página Cart
+// componentes estilizados da página Home
 
 import styled from "styled-components";
 
