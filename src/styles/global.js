@@ -58,7 +58,6 @@ export default createGlobalStyle`
     height: 100%;
   }
   #root {
-    min-width: 900px;
     width: 100vw;
     margin: 0 auto;
   }
