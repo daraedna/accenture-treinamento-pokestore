@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Styled } from './styles';
 
-function Cart() {
+function Profile() {
   return <div />;
 }
 
-export default Cart;
+export default Profile;
