@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {mixins} from "../../styles/mixins"
+
 export const ContainerCard = {
     Container: styled.div `
         background-color: ${mixins.colors};
