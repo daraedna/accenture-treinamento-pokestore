@@ -1,12 +1,13 @@
 import React from 'react';
 import {ContainerCard} from './styles'
 import Button from '../Button'
+import pikachu from '../../assets/pikachu.png'
 
 export function Cards() {
   return (
     <ContainerCard.Container>
       <ContainerCard.Content>
-        <ContainerCard.Avatar/>
+        <ContainerCard.Avatar src={pikachu} alt="Imagem Pokemon"/>
         <ContainerCard.Title>
           Pikachu
         </ContainerCard.Title>
@@ -25,4 +26,3 @@ export function Cards() {
     </ContainerCard.Container>
   )
 }
-
