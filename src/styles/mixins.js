@@ -1,12 +1,16 @@
 export const mixins = {
     colors: {
-        background: "#E4E4E4",
-        primary: "#23A6F0",
-        secondary: "#fff",
+        background: "#F7F7F7",
+        primary: "#3AD280",
+        secondary: "#23A6F0",
+        card: "#E5E5E5",
+        text: "#717171",
+        white: "#FFFFFF",
         green: "green",
         blue: "blue",
         red: "red",
-        grey: "grey"
+        grey: "grey",
+        gradient: "linear-gradient(93.94deg, #3AD280 11.55%, #23A6F0 93.96%), #3AD280"
     },
     fonts: {
         bold: 'Montserrat-Bold',
@@ -16,7 +20,8 @@ export const mixins = {
     typograph: {
         title: "24px",
         subTitle: "16px",
-        paragraph: "12px"
+        paragraph: "12px",
+        form: "13px"
     },
     size: {
         lg: 240,
