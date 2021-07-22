@@ -1,8 +1,12 @@
+import React from 'react';
+import { Cards } from './components/Cards';
+
 import GlobalStyle from './styles/global';
 
 function App() {
-  return (
+  return(
     <div>
+      <Cards/>
       <GlobalStyle />
     </div>
   );
