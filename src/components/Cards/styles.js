@@ -3,13 +3,14 @@ import {mixins} from "../../styles/mixins";
 
 export const ContainerCard = {
     Container: styled.div `
+    height: 450px;
     `,
     Content: styled.div `
         background-color: ${mixins.colors.card};
-        width: 250px;
-        height: 415px;
         border-radius: 20px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4);
+        width: 250px;
+        height: 415px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
@@ -39,6 +40,6 @@ export const ContainerCard = {
     margin: 20px 0 0 36px;
     `,
     Button: styled.span `
-        margin-left: 30px;
-    `
+    text-align: center;
+`
 }
