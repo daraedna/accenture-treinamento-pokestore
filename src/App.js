@@ -1,14 +1,12 @@
 import React from 'react';
-//import { Cards } from './components/Cards';
-import Cart from './pages/Cart';
+import { Cards } from './components/Cards';
 
 import GlobalStyle from './styles/global';
 
 function App() {
   return (
     <div>
-      {/* <Cards/> */} {/* Descomentar */}
-      <Cart />
+      <Cards />
       <GlobalStyle />
     </div>
   );

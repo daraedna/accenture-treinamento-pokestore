@@ -10,6 +10,7 @@ export const Styled = {
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 5px;
     margin: 0 auto;
     padding: 2rem;
     box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
