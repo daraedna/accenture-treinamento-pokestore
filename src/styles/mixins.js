@@ -10,7 +10,8 @@ export const mixins = {
         blue: "blue",
         red: "red",
         grey: "grey",
-        gradient: "linear-gradient(93.94deg, #3AD280 11.55%, #23A6F0 93.96%), #3AD280"
+        gradient: "linear-gradient(93.94deg, #3AD280 11.55%, #23A6F0 93.96%), #3AD280",
+        greyHover: "#E8E8E8",
     },
     fonts: {
         bold: 'Montserrat-Bold',
