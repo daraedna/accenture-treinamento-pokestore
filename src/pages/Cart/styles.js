@@ -7,6 +7,7 @@ export const Styled = {
   Container: styled.div`
     background-color: ${mixins.colors.white};
     max-width: 934px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,11 +19,11 @@ export const Styled = {
     table{
       margin: 0;
       width: 828px;
-      
+
       th {
         font-size: ${mixins.typograph.title};
       }
-      
+
       th, td {
         padding: 1rem;
         vertical-align: middle;
@@ -99,7 +100,7 @@ export const Styled = {
     display: flex;
     flex-direction: column;
     text-align: left;
-    
+
     span:first-child {
       margin-bottom: 1rem;
     };

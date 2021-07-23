@@ -6,9 +6,9 @@ export const ContainerCard = {
     height: 450px;
     `,
     Content: styled.div `
-        background-color: ${mixins.colors.card};
+        background-color: ${mixins.colors.white};
         border-radius: 20px;
-        box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4);
+        box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
         width: 250px;
         height: 415px;
         display: grid;

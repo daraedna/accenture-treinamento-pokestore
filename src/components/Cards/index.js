@@ -3,7 +3,7 @@ import {ContainerCard} from './styles'
 import Button from '../Button'
 import pikachu from '../../assets/pikachu.png'
 
-export function Cards() {
+export default function Cards() {
   return (
     <ContainerCard.Container>
       <ContainerCard.Content>
