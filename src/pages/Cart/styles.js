@@ -24,31 +24,12 @@ export const Styled = {
       
       th, td {
         padding: 1rem;
-        /* border: 1px solid blue; */
         vertical-align: middle;
         color: ${mixins.colors.text};
       }
 
-
       .FootRow{
-        padding: 2rem 0;
-
-        .FootRowContentWrapper{
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          .totalWrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            p {
-              margin-bottom: 0;
-              margin-right: 0.5rem;
-            }
-          }
-        }
+        padding: 2rem 0 0;
       }
     }
 
@@ -63,12 +44,13 @@ export const Styled = {
     input[type=number] {
       -moz-appearance: textfield;
     }
-    
   `,
 
   ProductRow: styled.tr`
+    height: 12rem;
     font-size: ${mixins.typograph.subTitle};
-    border-bottom: 1px solid ${mixins.colors.text};
+    font-weight: 700;
+    border-bottom: 1px solid #DDDDDD;
   `,
 
   Input: styled.input`
@@ -79,6 +61,7 @@ export const Styled = {
     margin: 0 0.2rem;
     border: 1px solid #DDDDDD;
     border-radius: 5px;
+    color: ${mixins.colors.text};
   `,
 
   AmountButton: styled.button`
@@ -119,5 +102,30 @@ export const Styled = {
     span:first-child {
       margin-bottom: 1rem;
     };
-  `
+  `,
+
+  FootRowContentWrapper: styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  `,
+
+  TotalPriceWrapper: styled.div`
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    p {
+      margin-bottom: 0;
+      margin-right: 0.5rem;
+      font-size: ${mixins.typograph.subTitle};
+      font-weight: 700;
+    }
+
+    strong {
+      font-size: ${mixins.typograph.title};
+      font-weight: 700;
+      align-self: flex-end;
+    }
+  `,
 }
