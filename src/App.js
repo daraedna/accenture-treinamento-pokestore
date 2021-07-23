@@ -1,14 +1,15 @@
 import React from 'react';
-import { Cards } from './components/Cards';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './routes';
 
 import GlobalStyle from './styles/global';
 
 function App() {
   return(
-    <div>
-      <Cards/>
+    <BrowserRouter>
+      <Routes />
       <GlobalStyle />
-    </div>
+    </BrowserRouter>
   );
 }
 

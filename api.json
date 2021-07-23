@@ -1,0 +1,13 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "login": "teste",
+            "password": "teste",
+            "name": "Admin",
+            "last_name": "George",
+            "city": "Recife",
+            "access_token": "liberado"
+        }
+    ]
+}
