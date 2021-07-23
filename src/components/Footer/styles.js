@@ -11,6 +11,7 @@ export const Styles = {
         background: ${mixins.colors.primary};
     `,
      TextFooter: styled.p`
+        margin: 0;
         font-size: ${mixins.typograph.paragraph};
         color: ${mixins.colors.white};
     `

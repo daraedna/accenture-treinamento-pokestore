@@ -18,7 +18,7 @@ export function Cards() {
           R$ 20.000.00
         </ContainerCard.Price>
         <ContainerCard.Button>
-        <Button type="primary" className="Card_Button">
+        <Button type="primary">
           Adicionar ao Carrinho
         </Button>
         </ContainerCard.Button>
