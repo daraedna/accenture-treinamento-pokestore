@@ -20,17 +20,17 @@ export default function Routes() {
         <Styled.AppLayout>
             {auth && <Button type="secondary" onClick={handleClick}>Sair</Button>}
             <Switch>
-                    {auth ?
-                        <>
-                            <Route path="/" exact component={Home} />
-                            <Route path="/home" component={Home} />
-                            <Route path="/cart" component={Cart} />
-                        </>
+                {/* auth */true ? // Descomentar o Auth
+                    <>
+                        <Route path="/" exact component={Home} />
+                        <Route path="/home" component={Home} />
+                        <Route path="/cart" component={Cart} />
+                    </>
                     :
-                        <Route path="/" exact component={Login} />
-                    }
-                    <Redirect from="*" to={NotFound} />
-                </Switch>
+                    <Route path="/" exact component={Login} />
+                }
+                <Redirect from="*" to={NotFound} />
+            </Switch>
             <Footer />
         </Styled.AppLayout>
     )

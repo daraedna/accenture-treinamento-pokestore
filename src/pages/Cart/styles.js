@@ -5,16 +5,12 @@ import { mixins } from "../../styles/mixins";
 
 export const Styled = {
   Container: styled.div`
-    background-color: ${mixins.colors.white};
-    max-width: 934px;
+    width: 100vw;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
-    margin: 0 auto;
-    padding: 2rem;
-    box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
+    background: ${mixins.colors.background};
 
     table{
       margin: 0;
@@ -46,6 +42,14 @@ export const Styled = {
     input[type=number] {
       -moz-appearance: textfield;
     }
+  `,
+
+  TableWrapper: styled.div`
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 2rem;
+    box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
+    background-color: ${mixins.colors.white}
   `,
 
   ProductRow: styled.tr`
