@@ -9,6 +9,7 @@ import NotFound from '../pages/NotFound';
 import Footer from '../components/Footer';
 import { Styled } from './styles';
 import Button from '../components/Button';
+import Profile from '../pages/Profile';
 
 export default function Routes() {
     const { auth, SignOut } = useAuth();
@@ -26,7 +27,7 @@ export default function Routes() {
                             <Route path="/" exact component={Home} />
                             <Route path="/home" component={Home} />
                             <Route path="/cart" component={Cart} />
-                            <Route path="/profile" component={Profile}/>
+                            <Route path="/profile" component={Profile} />
                         </>
                     :
                         <Route path="/" exact component={Login} />
