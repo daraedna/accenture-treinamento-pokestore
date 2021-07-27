@@ -15,7 +15,7 @@ function Cart() {
         <Table
           borderless
         >
-          <thead className="tableHead">
+          <thead className="table-head">
             <tr>
               <th scope="col"></th>
               <th scope="col">Produto</th>
@@ -26,18 +26,18 @@ function Cart() {
           </thead>
           <tbody>
             <Styled.ProductRow>
-              <td>
+              <td className="avatar-container">
                 <img src={pikachuImg} alt="Imagem do Pokémon" />
               </td>
-              <td>
+              <td className="product-price-container">
                 <Styled.ProductPriceDataCell>
                   <span>Picachu</span>
                   <span>R$ 20.000,00</span>
                 </Styled.ProductPriceDataCell>
               </td>
-              <td>
+              <td className="product-amount-container">
                 <Styled.AmountButton>
-                  <FiMinusCircle size="22px" color={mixins.colors.text} />
+                  <FiMinusCircle size="18px" color={mixins.colors.text} />
                 </Styled.AmountButton>
                 <Styled.Input
                   type="number"
@@ -47,13 +47,13 @@ function Cart() {
                   onChange={() => { }} /* trocar para função real */
                 />
                 <Styled.AmountButton>
-                  <FiPlusCircle size="22px" color={mixins.colors.text} />
+                  <FiPlusCircle size="18px" color={mixins.colors.text} />
                 </Styled.AmountButton>
               </td>
-              <td>
+              <td className="subtotal-container">
                 <span>R$ 20.000,00</span>
               </td>
-              <td>
+              <td className="delete-button-container">
                 <Styled.DeleteButton type="button">
                   <FiTrash size="22px" color="#EA4335"
                     className="trashIcon"
@@ -61,52 +61,16 @@ function Cart() {
                 </Styled.DeleteButton>
               </td>
             </Styled.ProductRow>
-            {/* <Styled.ProductRow>
-              <td>
-                <img src={charmanderImg} alt="Imagem do Pokémon" />
-              </td>
-              <td>
-                <Styled.ProductPriceDataCell>
-                  <span>Charizard</span>
-                  <span>R$ 18.000,00</span>
-                </Styled.ProductPriceDataCell>
-              </td>
-              <td>
-                <Styled.AmountButton>
-                  <FiMinusCircle size="22px" color={mixins.colors.text} />
-                </Styled.AmountButton>
-                <Styled.Input
-                  type="number"
-                  id="amount"
-                  name="amount"
-                  value="1"
-                  onChange={() => { }}
-                />
-                <Styled.AmountButton>
-                  <FiPlusCircle size="22px" color={mixins.colors.text} />
-                </Styled.AmountButton>
-              </td>
-              <td>
-                <span>R$ 18.000,00</span>
-              </td>
-              <td>
-                <Styled.DeleteButton type="button">
-                  <FiTrash size="22px" color="#EA4335"
-                    className="trashIcon"
-                  />
-                </Styled.DeleteButton>
-              </td>
-            </Styled.ProductRow> */}
           </tbody>
           <tfoot>
             <tr>
-              <td className="FootRow" colSpan="5">
+              <td className="foot-row" colSpan="5">
                 <Styled.FootRowContentWrapper>
                   <Button type="primary">
                     Finzalizar Pedido
                   </Button>
                   <Styled.TotalPriceWrapper>
-                    <p>Total</p>
+                    <p>Total:</p>
                     <strong>R$ 38.000,00</strong>
                   </Styled.TotalPriceWrapper>
                 </Styled.FootRowContentWrapper>

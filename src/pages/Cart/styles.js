@@ -17,6 +17,7 @@ export const Styled = {
       margin: 2rem 0;
       font-weight: 700;
       font-size: ${mixins.typograph.title};
+      color: ${mixins.colors.text};
       padding: 0.5rem;
     }
 
@@ -33,7 +34,7 @@ export const Styled = {
         color: ${mixins.colors.text};
       }
 
-      .FootRow{
+      .foot-row{
         padding: 2rem 0 0;
 
         @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -70,13 +71,14 @@ export const Styled = {
       padding: 0;
       margin-bottom: 2rem;
       
-      .tableHead {
+      .table-head {
         display: none;
       }
     }
     
     @media screen and (min-width: 769px) and (max-width:1024px) {
-      max-width: 55rem;
+      width: 100%;
+      max-width: 50rem;
     }
   `,
 
@@ -87,29 +89,62 @@ export const Styled = {
     border-bottom: 1px solid #DDDDDD;
 
     @media screen and (min-width: 320px) and (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       align-items: center;
+      justify-content: center;
       height: 100%;
       padding: 0.5rem;
-      font-size: ${mixins.typograph.paragraph};
+      padding-top: 1.2rem;
+      font-size: ${mixins.typograph.subTitle};
+      font-weight: 400;
+      white-space: nowrap;
 
-      img {
-        max-width: 85px;
+      .avatar-container {
+        grid-row: 1;
+        grid-column: 2;
+        padding: 0;
+        margin: 0 auto;
+        
+        img {
+          max-width: 85px;
+        }
       }
 
-      span:first-child {
-        text-align: center;
+      .product-price-container {
+        grid-row: 2;
+        grid-column: 2;
+        padding: 0;
+        margin: 0 auto;
+
+        span:first-child {
+          text-align: center;
+          font-weight: 700;
+        }
       }
 
-      td:nth-last-child() {
-        background: red;
+      .product-amount-container {
+        grid-row: 3;
+        grid-column: 1;
+        padding: 0;
+        margin: 0 auto;
+      }
+
+      .subtotal-container {
+        grid-row: 3;
+        grid-column: 2;
+        padding: 0;
+        margin: 0 auto;
+      }
+
+      .delete-button-container {
+        grid-row: 3;
+        grid-column: 3;
+        padding: 0;
+        margin: 0 auto;
       }
     }
-  `,
-
-  MobileLine: styled.div`
-  
   `,
 
   Input: styled.input`
@@ -121,6 +156,11 @@ export const Styled = {
     border: 1px solid #DDDDDD;
     border-radius: 5px;
     color: ${mixins.colors.text};
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      height: 2rem;
+      width: 2.4rem;
+    }
   `,
 
   AmountButton: styled.button`
@@ -138,6 +178,12 @@ export const Styled = {
 
     &:active{
       filter: brightness(0.7);
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      height: 1.5rem;
+      width: 1.5rem;
+      overflow: hidden;
     }
   `,
 
@@ -170,11 +216,8 @@ export const Styled = {
 
     @media screen and (min-width: 320px) and (max-width: 768px) {
       flex-direction: column-reverse;
+      gap: 1rem;
     }
-    
-    /* @media screen and (min-width: 769px) and (max-width:1024px) {
-      max-width: 55rem;
-    } */
   `,
 
   TotalPriceWrapper: styled.div`
@@ -193,6 +236,10 @@ export const Styled = {
       font-size: ${mixins.typograph.title};
       font-weight: 700;
       align-self: flex-end;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      align-items: center;
     }
   `,
 }
