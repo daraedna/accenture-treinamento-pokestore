@@ -8,13 +8,20 @@ export const Styled = {
     width: 100vw;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: ${mixins.colors.background};
 
+    h1 {
+      margin: 2rem 0;
+      font-weight: 700;
+      font-size: ${mixins.typograph.title};
+      padding: 0.5rem;
+    }
+
     table{
       margin: 0;
-      width: 828px;
 
       th {
         font-size: ${mixins.typograph.title};
@@ -28,6 +35,10 @@ export const Styled = {
 
       .FootRow{
         padding: 2rem 0 0;
+
+        @media screen and (min-width: 320px) and (max-width: 768px) {
+          padding: 1.5rem;
+        }
       }
     }
 
@@ -47,9 +58,26 @@ export const Styled = {
   TableWrapper: styled.div`
     border-radius: 5px;
     margin: 0 auto;
+    width: 53rem;
     padding: 2rem;
+    overflow: auto;
     box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
-    background-color: ${mixins.colors.white}
+    background-color: ${mixins.colors.white};
+    
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      width: 100%;
+      max-width: 35rem;
+      padding: 0;
+      margin-bottom: 2rem;
+      
+      .tableHead {
+        display: none;
+      }
+    }
+    
+    @media screen and (min-width: 769px) and (max-width:1024px) {
+      max-width: 55rem;
+    }
   `,
 
   ProductRow: styled.tr`
@@ -57,6 +85,31 @@ export const Styled = {
     font-size: ${mixins.typograph.subTitle};
     font-weight: 700;
     border-bottom: 1px solid #DDDDDD;
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      padding: 0.5rem;
+      font-size: ${mixins.typograph.paragraph};
+
+      img {
+        max-width: 85px;
+      }
+
+      span:first-child {
+        text-align: center;
+      }
+
+      td:nth-last-child() {
+        background: red;
+      }
+    }
+  `,
+
+  MobileLine: styled.div`
+  
   `,
 
   Input: styled.input`
@@ -114,6 +167,14 @@ export const Styled = {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      flex-direction: column-reverse;
+    }
+    
+    /* @media screen and (min-width: 769px) and (max-width:1024px) {
+      max-width: 55rem;
+    } */
   `,
 
   TotalPriceWrapper: styled.div`

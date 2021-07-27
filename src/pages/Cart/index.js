@@ -10,11 +10,12 @@ import { mixins } from "../../styles/mixins";
 function Cart() {
   return (
     <Styled.Container>
+      <h1>Meu carrinho</h1>
       <Styled.TableWrapper>
         <Table
           borderless
         >
-          <thead>
+          <thead className="tableHead">
             <tr>
               <th scope="col"></th>
               <th scope="col">Produto</th>
@@ -60,7 +61,7 @@ function Cart() {
                 </Styled.DeleteButton>
               </td>
             </Styled.ProductRow>
-            <Styled.ProductRow>
+            {/* <Styled.ProductRow>
               <td>
                 <img src={charmanderImg} alt="Imagem do Pokémon" />
               </td>
@@ -79,7 +80,7 @@ function Cart() {
                   id="amount"
                   name="amount"
                   value="1"
-                  onChange={() => { }} /* trocar para função real */
+                  onChange={() => { }}
                 />
                 <Styled.AmountButton>
                   <FiPlusCircle size="22px" color={mixins.colors.text} />
@@ -95,7 +96,7 @@ function Cart() {
                   />
                 </Styled.DeleteButton>
               </td>
-            </Styled.ProductRow>
+            </Styled.ProductRow> */}
           </tbody>
           <tfoot>
             <tr>
