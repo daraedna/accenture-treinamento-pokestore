@@ -25,10 +25,10 @@ export default function Routes() {
                             <Route path="/profile" component={Profile}/>
                         </>
                     :
-                        <Route path="/" exact component={Login} />
-                    }
-                    <Redirect from="*" to={NotFound} />
-                </Switch>
+                    <Route path="/" exact component={Login} />
+                }
+                <Redirect from="*" to={NotFound} />
+            </Switch>
             <Footer />
         </Styled.AppLayout>
     )
