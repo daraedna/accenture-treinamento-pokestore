@@ -5,20 +5,24 @@ import { mixins } from "../../styles/mixins";
 
 export const Styled = {
   Container: styled.div`
-    background-color: ${mixins.colors.white};
-    max-width: 934px;
+    width: 100vw;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
-    margin: 0 auto;
-    padding: 2rem;
-    box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
+    background: ${mixins.colors.background};
+
+    h1 {
+      margin: 2rem 0;
+      font-weight: 700;
+      font-size: ${mixins.typograph.title};
+      color: ${mixins.colors.text};
+      padding: 0.5rem;
+    }
 
     table{
       margin: 0;
-      width: 828px;
 
       th {
         font-size: ${mixins.typograph.title};
@@ -30,8 +34,12 @@ export const Styled = {
         color: ${mixins.colors.text};
       }
 
-      .FootRow{
+      .foot-row{
         padding: 2rem 0 0;
+
+        @media screen and (min-width: 320px) and (max-width: 768px) {
+          padding: 1.5rem;
+        }
       }
     }
 
@@ -48,11 +56,95 @@ export const Styled = {
     }
   `,
 
+  TableWrapper: styled.div`
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 53rem;
+    padding: 2rem;
+    overflow: auto;
+    box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
+    background-color: ${mixins.colors.white};
+    
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      width: 100%;
+      max-width: 35rem;
+      padding: 0;
+      margin-bottom: 2rem;
+      
+      .table-head {
+        display: none;
+      }
+    }
+    
+    @media screen and (min-width: 769px) and (max-width:1024px) {
+      width: 100%;
+      max-width: 50rem;
+    }
+  `,
+
   ProductRow: styled.tr`
     height: 12rem;
     font-size: ${mixins.typograph.subTitle};
     font-weight: 700;
     border-bottom: 1px solid #DDDDDD;
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 0.5rem;
+      padding-top: 1.2rem;
+      font-size: ${mixins.typograph.subTitle};
+      font-weight: 400;
+      white-space: nowrap;
+
+      .avatar-container {
+        grid-row: 1;
+        grid-column: 2;
+        padding: 0;
+        margin: 0 auto;
+        
+        img {
+          max-width: 85px;
+        }
+      }
+
+      .product-price-container {
+        grid-row: 2;
+        grid-column: 2;
+        padding: 0;
+        margin: 0 auto;
+
+        span:first-child {
+          text-align: center;
+          font-weight: 700;
+        }
+      }
+
+      .product-amount-container {
+        grid-row: 3;
+        grid-column: 1;
+        padding: 0;
+        margin: 0 auto;
+      }
+
+      .subtotal-container {
+        grid-row: 3;
+        grid-column: 2;
+        padding: 0;
+        margin: 0 auto;
+      }
+
+      .delete-button-container {
+        grid-row: 3;
+        grid-column: 3;
+        padding: 0;
+        margin: 0 auto;
+      }
+    }
   `,
 
   Input: styled.input`
@@ -64,6 +156,11 @@ export const Styled = {
     border: 1px solid #DDDDDD;
     border-radius: 5px;
     color: ${mixins.colors.text};
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      height: 2rem;
+      width: 2.4rem;
+    }
   `,
 
   AmountButton: styled.button`
@@ -81,6 +178,12 @@ export const Styled = {
 
     &:active{
       filter: brightness(0.7);
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      height: 1.5rem;
+      width: 1.5rem;
+      overflow: hidden;
     }
   `,
 
@@ -110,6 +213,11 @@ export const Styled = {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      flex-direction: column-reverse;
+      gap: 1rem;
+    }
   `,
 
   TotalPriceWrapper: styled.div`
@@ -128,6 +236,10 @@ export const Styled = {
       font-size: ${mixins.typograph.title};
       font-weight: 700;
       align-self: flex-end;
+    }
+
+    @media screen and (min-width: 320px) and (max-width: 768px) {
+      align-items: center;
     }
   `,
 }
