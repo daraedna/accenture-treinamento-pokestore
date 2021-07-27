@@ -2,7 +2,6 @@ import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from '../../components/Button';
 import pikachuImg from '../../assets/pikachu.png';
-import charmanderImg from '../../assets/charmander.png';
 import { FiTrash, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
