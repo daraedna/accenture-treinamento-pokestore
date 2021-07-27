@@ -1,9 +1,7 @@
 import React from 'react';
 import {Styled} from './styles'
-import Footer from '../../components/Footer';
 import profile_img from '../../assets/profile_img.png'
-
-
+import Button from '../../components/Button'
 
 export default function Profile() {
   return (
@@ -11,62 +9,51 @@ export default function Profile() {
       <Styled.Card_Container>
         <h1>Meu perfil</h1>
       <Styled.Content>
-      <div>
+      
+      <Styled.Avatar_Container>
         <img src={profile_img}/>
-      </div>
+      </Styled.Avatar_Container>
+
       <div>
-        <form onSubmit="">
-          <div>
-            <div>
+        <Styled.Form onSubmit="">
+
+          <Styled.Name_Container>
             <label>Nome Completo</label>
             <input/>
-            </div>
+          </Styled.Name_Container>
 
-          <div>
+          <Styled.Sex_Container>
             <label>Sexo</label>
             <select>
               <option>Masculino</option>
               <option>Feminino</option>
             </select>
-          </div>
+          </Styled.Sex_Container>
 
-          </div>
 
       
-        <div>
-          <div>
+        <Styled.Origin>
             <label>Origem</label>
             <select>
               <option>Japão</option>
               <option>Coréia</option>
             </select>
-          </div>
+          </Styled.Origin>
 
-          <div>
+          <Styled.Function>
             <label>Função</label>
             <input/>
-          </div>
-        </div>
+          </Styled.Function>
       
-      <div>
-        <button>Salvar</button>
-        <button>Cancelar</button>
-      </div>
+      <Styled.Buttons>
+      <Button type="primary">Salvar</Button>
+      <Button type="secondary">Cancelar</Button>
+      </Styled.Buttons>
 
-        </form>
+        </Styled.Form>
       </div>
       </Styled.Content>
       </Styled.Card_Container>
     </Styled.Container>
   );
 }
-
-      // <Styled.Content_Container2>
-      //   <Styled.Name>
-      //     <p>Nome completo</p>  
-      //   </Styled.Name>
-      //   <select>
-      //     <option>Masculino</option>
-      //     <option>Feminino</option>
-      //   </select>
-      // </Styled.Content_Container2>
