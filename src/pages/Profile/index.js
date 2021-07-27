@@ -9,14 +9,54 @@ export default function Profile() {
   return (
     <Styled.Container>
       <Styled.Card_Container>
-      <Styled.Content_Container>
-      <Styled.Card_Title>
-        <h2>Meu perfil</h2>
-      </Styled.Card_Title>
-      <Styled.Img src={profile_img}/>
-      </Styled.Content_Container>
+        <h1>Meu perfil</h1>
+      <Styled.Content>
+      <div>
+        <img src={profile_img}/>
+      </div>
+      <div>
+        <form onSubmit="">
+          <div>
+            <div>
+            <label>Nome Completo</label>
+            <input/>
+            </div>
+
+          <div>
+            <label>Sexo</label>
+            <select>
+              <option>Masculino</option>
+              <option>Feminino</option>
+            </select>
+          </div>
+
+          </div>
+
+      
+        <div>
+          <div>
+            <label>Origem</label>
+            <select>
+              <option>Japão</option>
+              <option>Coréia</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Função</label>
+            <input/>
+          </div>
+        </div>
+      
+      <div>
+        <button>Salvar</button>
+        <button>Cancelar</button>
+      </div>
+
+        </form>
+      </div>
+      </Styled.Content>
       </Styled.Card_Container>
-      <Footer/>
     </Styled.Container>
   );
 }

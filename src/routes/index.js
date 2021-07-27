@@ -9,7 +9,6 @@ import NotFound from '../pages/NotFound';
 import Footer from '../components/Footer';
 import { Styled } from './styles';
 import Button from '../components/Button';
-import Profile from '../pages/Profile';
 
 export default function Routes() {
     const { auth, SignOut } = useAuth();
@@ -20,21 +19,21 @@ export default function Routes() {
 
     return (
         <Styled.AppLayout>
-            {auth && <Button type="secondary" onClick={handleClick}>Sair</Button>}
+             {auth && <Button type="secondary" onClick={handleClick}>Sair</Button>}
             <Switch>
-                    {auth ?
+                <Route path="/profile" component={Profile} />
+                    {/* {auth ?
                         <>
                             <Route path="/" exact component={Home} />
                             <Route path="/home" component={Home} />
                             <Route path="/cart" component={Cart} />
-                            <Route path="/profile" component={Profile} />
                         </>
                     :
                         <Route path="/" exact component={Login} />
                     }
-                    <Redirect from="*" to={NotFound} />
+                    <Redirect from="*" to={NotFound} /> */}
                 </Switch>
-            <Footer />
+             <Footer />
         </Styled.AppLayout>
     )
 }
