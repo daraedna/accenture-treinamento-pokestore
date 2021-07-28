@@ -95,7 +95,7 @@ export const Styled = {
         justify-content: center;
 
     button:first-child {
-        margin:0 0 0.5rem 0 ;
+       // margin:0 0 0.5rem 0 ;
     }
     button {
 
