@@ -96,7 +96,7 @@ export const Styled = {
         justify-content: center;
         gap: 0.5rem;
 
-     button:first-child {
+    button:first-child {
     }
     button {
 
