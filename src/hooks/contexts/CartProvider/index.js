@@ -1,5 +1,10 @@
-import { useEffect } from 'react';
-import { createContext, useContext, useRef, useState } from 'react';
+import {
+  createContext,
+  useContext,
+  useRef,
+  useState,
+  useEffect
+} from 'react';
 
 const CartContext = createContext({});
 
@@ -27,7 +32,27 @@ function CartProvider({ children }) {
 
   const addProductToCart = (productId) => {
     const updatedCart = [...cart];
-    const productExists = updatedCart.find(product => product.id === productId)
+    const productExists = updatedCart.find(product => product.id === productId);
+
+    const currentAmount = productExists ? productExists.amount : 0;
+
+    const amount = currentAmount + 1;
+
+    if (productExists) {
+      productExists.amount = amount;
+    } else {
+      // recebendo novo produto no carrinho
+      // talvez fazer a chamada a API aqui
+      // usar async await nesse caso
+      const product = { productId, amount };
+
+      const newProduct = {
+        ...product,
+        amount: 1,
+      }
+      updatedCart.push(newProduct)
+    }
+    setCart(updatedCart);
   }
 
   const removeProductFromCart = () => {
@@ -43,6 +68,9 @@ function CartProvider({ children }) {
     <CartContext.Provider
       value={{
         cart,
+        addProductToCart,
+        removeProductFromCart,
+        updateProductAmount
       }}
     >
       {children}
