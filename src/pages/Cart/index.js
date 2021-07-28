@@ -7,6 +7,23 @@ import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
 
 function Cart() {
+
+  const handleIncrementProduct = (product) => {
+
+  }
+
+  const handleDecrementProduct = (product) => {
+
+  }
+
+  const handleRemoveProduct = (productId) => {
+
+  }
+
+  /* const total = cart.reduce((sumTotal, product) => {
+    return sumTotal + product.price * product.amount;
+  }, 0); */
+
   return (
     <Styled.Container>
       <h1>Meu carrinho</h1>
@@ -35,17 +52,24 @@ function Cart() {
                 </Styled.ProductPriceDataCell>
               </td>
               <td className="product-amount-container">
-                <Styled.AmountButton>
+                <Styled.AmountButton
+                  type="button"
+                  /* disabled={product.amount <= 1} */
+                  onclick={() => handleDecrementProduct(/* product */)}
+                >
                   <FiMinusCircle size="18px" color={mixins.colors.text} />
                 </Styled.AmountButton>
                 <Styled.Input
-                  type="number"
+                  type="text"
                   id="amount"
                   name="amount"
-                  value="1"
-                  onChange={() => { }} /* trocar para função real */
+                  readOnly
+                  value="1"/* {product.amount} */
                 />
-                <Styled.AmountButton>
+                <Styled.AmountButton
+                  type="button"
+                  onclick={() => handleIncrementProduct(/* product */)}
+                >
                   <FiPlusCircle size="18px" color={mixins.colors.text} />
                 </Styled.AmountButton>
               </td>
@@ -53,7 +77,10 @@ function Cart() {
                 <span>R$ 20.000,00</span>
               </td>
               <td className="delete-button-container">
-                <Styled.DeleteButton type="button">
+                <Styled.DeleteButton
+                  type="button"
+                  onclick={() => handleRemoveProduct(/* product.id */)}
+                >
                   <FiTrash size="22px" color="#EA4335"
                     className="trashIcon"
                   />

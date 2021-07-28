@@ -16,7 +16,26 @@ function CartProvider({ children }) {
       return JSON.parse(storagedCart);
     }
 
-    return [];
+    return [
+      {
+        id: 1,
+        name: 'Picachu',
+        amount: 1,
+        price: 200,
+      },
+      {
+        id: 2,
+        name: 'Charmander',
+        amount: 1,
+        price: 179.9,
+      },
+      {
+        id: 3,
+        name: 'Bulbasaur',
+        amount: 1,
+        price: 179.9,
+      }
+    ];
   })
 
   const previousCartRef = useRef();
@@ -59,8 +78,18 @@ function CartProvider({ children }) {
     setCart(updatedCart);
   }
 
-  const removeProductFromCart = () => {
+  const removeProductFromCart = (productId) => {
+    try {
+      const updatedCart = [...cart];
+      const productIndex = updatedCart.find(product => product.id === productId);
 
+      if (product) {
+
+      }
+
+    } catch (error) {
+      alert("Erro na remoção do produto")
+    }
   }
 
   const updateProductAmount = () => {
