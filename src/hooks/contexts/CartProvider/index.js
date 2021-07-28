@@ -20,10 +20,14 @@ function CartProvider({ children }) {
   })
 
   const previousCartRef = useRef();
+
   useEffect(() => {
     previousCartRef.current = cart;
   });
+
+  // Se o previousCartRef for null/undefined, retornará o cart
   const cartPreviosValue = previousCartRef ?? cart;
+
   useEffect(() => {
     if (cartPreviosValue !== cart) {
       localStorage.setItem('@PokeStore:cart', JSON.stringify(cart));
