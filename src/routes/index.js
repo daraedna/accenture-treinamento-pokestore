@@ -16,19 +16,21 @@ export default function Routes() {
     return (
         <Styled.AppLayout>
             {auth && <NavBar />}
-            <Switch>
-                   {auth ?
-                        <>
-                            <Route path="/" exact component={Home} />
-                            <Route path="/home" component={Home} />
-                            <Route path="/cart" component={Cart} />
-                            <Route path="/profile" component={Profile} />
-                        </>
-                    :
-                    <Route path="/" exact component={Login} />
-                  }
-                <Redirect from="*" to={NotFound} />
-            </Switch>
+            <Styled.PageLayout>
+                <Switch>
+                    {auth ?
+                            <>
+                                <Route path="/" exact component={Home} />
+                                <Route path="/home" component={Home} />
+                                <Route path="/cart" component={Cart} />
+                                <Route path="/profile" component={Profile} />
+                            </>
+                        :
+                        <Route path="/" exact component={Login} />
+                    }
+                    <Redirect from="*" to={NotFound} />
+                </Switch>
+            </Styled.PageLayout>
             <Footer />
         </Styled.AppLayout>
     )
