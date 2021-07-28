@@ -10,9 +10,13 @@ const ButtonPrimary = styled.button`
         height: 44px;
         font-size: ${mixins.typograph.paragraph};
         font-family: ${mixins.fonts.semi_bold};
-        margin: 2px;
-        :hover {
-            opacity: 0.9
+        margin: 6px;
+        transition: 0.3s ease, transform 0.3s ease;
+
+        :active, :hover {
+            opacity: 0.8;
+            box-shadow: 0px 1px 8px 2px rgba(62, 104, 84, 0.4);
+            transform: translate(3px 3px);
         }
     `
 

@@ -8,18 +8,18 @@ export const Styled = {
     Container: styled.div`
         width: 100%;
         height: 100%;
-        margin: 20px 50px;
+        margin: 20px 0;
         display: flex;
         justify-content: center;
     `,
 
     Content: styled.div`
-        width: 80%;
+        width: 90%;
         height: 100%;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1rem;
         overflow-y: scroll;
-
     `,
 
 };
