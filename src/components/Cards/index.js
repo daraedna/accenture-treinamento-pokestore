@@ -11,16 +11,16 @@ export default function Cards() {
         <ContainerCard.Title>
           Pikachu
         </ContainerCard.Title>
-        <ContainerCard.Description>
+       {/*  <ContainerCard.Description>
           É um tipo x Pokékon introduzido na...
-        </ContainerCard.Description>
+        </ContainerCard.Description> */}
         <ContainerCard.Price>
           R$ 20.000.00
         </ContainerCard.Price>
         <ContainerCard.Button>
-        <Button type="primary">
-          Adicionar ao Carrinho
-        </Button>
+          <Button type="primary">
+            Adicionar ao Carrinho
+          </Button>
         </ContainerCard.Button>
       </ContainerCard.Content>
     </ContainerCard.Container>
