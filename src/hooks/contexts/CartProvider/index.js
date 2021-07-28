@@ -42,7 +42,7 @@ function CartProvider({ children }) {
   } */)
 
   useEffect(() => {
-    console.log(cart)
+    console.log(cart);
   }, [])
 
   const previousCartRef = useRef();
