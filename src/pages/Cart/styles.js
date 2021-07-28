@@ -118,8 +118,11 @@ export const Styled = {
         padding: 0;
         margin: 0 auto;
 
-        span:first-child {
+        span {
           text-align: center;
+        }
+        
+        span:first-child {
           font-weight: 700;
         }
       }

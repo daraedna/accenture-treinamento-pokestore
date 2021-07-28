@@ -9,14 +9,8 @@ import {
 const CartContext = createContext({});
 
 function CartProvider({ children }) {
-  const [cart, setCart] = useState(() => {
-    const storagedCart = localStorage.getItem('@PokeStore:cart');
-
-    if (storagedCart) {
-      return JSON.parse(storagedCart);
-    }
-
-    return [
+  const [cart, setCart] = useState(
+    [
       {
         id: 1,
         name: 'Picachu',
@@ -26,7 +20,7 @@ function CartProvider({ children }) {
       {
         id: 2,
         name: 'Charmander',
-        amount: 1,
+        amount: 2,
         price: 179.9,
       },
       {
@@ -35,8 +29,21 @@ function CartProvider({ children }) {
         amount: 1,
         price: 179.9,
       }
-    ];
-  })
+    ]
+
+    /* () => {
+    const storagedCart = localStorage.getItem('@PokeStore:cart');
+
+    if (storagedCart) {
+      return JSON.parse(storagedCart);
+    }
+
+    return [];
+  } */)
+
+  useEffect(() => {
+    console.log(cart)
+  }, [])
 
   const previousCartRef = useRef();
 
@@ -53,47 +60,71 @@ function CartProvider({ children }) {
     }
   }, [cart, cartPreviosValue]);
 
-  const addProductToCart = (productId) => {
-    const updatedCart = [...cart];
-    const productExists = updatedCart.find(product => product.id === productId);
+  const addProductToCart = (item) => {
+    try {
+      const updatedCart = [...cart];
+      const productExists = updatedCart.find(product => product.id === item.id);
 
-    const currentAmount = productExists ? productExists.amount : 0;
+      const currentAmount = productExists ? productExists.amount : 0;
 
-    const amount = currentAmount + 1;
+      const amount = currentAmount + 1;
 
-    if (productExists) {
-      productExists.amount = amount;
-    } else {
-      // recebendo novo produto no carrinho
-      // talvez fazer a chamada a API aqui
-      // usar async await nesse caso
-      const product = { productId, amount };
+      if (productExists) {
+        productExists.amount = amount;
+      } else {
+        // recebendo novo produto no carrinho
+        // talvez fazer a chamada a API aqui
+        // usar async await nesse caso
+        const product = item;
 
-      const newProduct = {
-        ...product,
-        amount: 1,
+        const newProduct = {
+          ...product,
+          amount: 1,
+        }
+        updatedCart.push(newProduct)
       }
-      updatedCart.push(newProduct)
+      setCart(updatedCart);
+
+    } catch (error) {
+      alert("Erro em adicionar produto");
     }
-    setCart(updatedCart);
   }
 
   const removeProductFromCart = (productId) => {
     try {
       const updatedCart = [...cart];
-      const productIndex = updatedCart.find(product => product.id === productId);
+      const productIndex = updatedCart.findIndex(product => product.id === productId);
 
-      if (product) {
-
+      if (productIndex >= 0) {
+        // removendo produto do array pelo id
+        updatedCart.splice(productIndex, 1);
+        setCart(updatedCart);
+      } else {
+        throw Error("Produto não removido")
       }
-
     } catch (error) {
       alert("Erro na remoção do produto")
     }
   }
 
-  const updateProductAmount = () => {
+  const updateProductAmount = ({ productId, amount }) => {
+    try {
+      if (amount <= 0) {
+        return;
+      }
 
+      const updatedCart = [...cart];
+      const productExists = updatedCart.find(product => product.id === productId);
+
+      if (productExists) {
+        productExists.amount = amount;
+        setCart(updatedCart);
+      } else {
+        throw Error("Quantidade não atualizada")
+      }
+    } catch (error) {
+      alert("Erro na atualização da quantidade do produto");
+    }
   }
 
 
