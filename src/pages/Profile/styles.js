@@ -15,15 +15,15 @@ export const Styled = {
     `,
     Card_Container: styled.div `
         width: 100%;
-        background-color: ${mixins.colors.white};
-        margin: 85px auto;
-        margin: 0 0 -10px 0;
+        background-color: black;
+        margin: -10px auto;
     `,
     Content: styled.div `
     overflow:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 1rem;
     `,
     Avatar_Container: styled.div `
@@ -34,9 +34,10 @@ export const Styled = {
     `,
 
     Form: styled.form `
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
         gap: 0.7rem;
+        
         input {
         height: 2rem;
         padding: 0 0.4rem;
@@ -85,7 +86,7 @@ export const Styled = {
        color: ${mixins.colors.text};
        font-size:${mixins.typograph.form};
         gap: 0.5rem;
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 0.2rem 0;
     `,
 
     Buttons: styled.div `
@@ -93,9 +94,9 @@ export const Styled = {
         display: flex;
         flex-direction: column;
         justify-content: center;
+        gap: 0.5rem;
 
-    button:first-child {
-        margin:0 0 0.5rem 0 ;
+     button:first-child {
     }
     button {
 

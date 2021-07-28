@@ -8,32 +8,28 @@ import Cart from '../pages/Cart';
 import NotFound from '../pages/NotFound';
 import Footer from '../components/Footer';
 import { Styled } from './styles';
-import Button from '../components/Button';
+import NavBar from '../components/NavBar';
 
 export default function Routes() {
-    const { auth, SignOut } = useAuth();
-
-    const handleClick = () => {
-        SignOut();
-    }
+    const { auth } = useAuth();
 
     return (
         <Styled.AppLayout>
-             {auth && <Button type="secondary" onClick={handleClick}>Sair</Button>}
+            {auth && <NavBar />}
             <Switch>
                 <Route path="/profile" component={Profile} />
-                    {/* {auth ?
+                   {auth ?
                         <>
                             <Route path="/" exact component={Home} />
                             <Route path="/home" component={Home} />
                             <Route path="/cart" component={Cart} />
                         </>
                     :
-                        <Route path="/" exact component={Login} />
-                    }
-                    <Redirect from="*" to={NotFound} /> */}
-                </Switch>
-             <Footer />
+                    <Route path="/" exact component={Login} />
+                  }
+                <Redirect from="*" to={NotFound} />
+            </Switch>
+            <Footer />
         </Styled.AppLayout>
     )
 }
