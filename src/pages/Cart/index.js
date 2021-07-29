@@ -1,9 +1,8 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import Button from '../../components/Button';
-import pikachuImg from '../../assets/pikachu.png';
 import { FiTrash, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
-import { formatPrice } from "../../util/format";
+//import { formatPrice } from "../../util/format";
 import { useCart } from '../../hooks/contexts/CartProvider';
 
 import { Styled } from './styles';
@@ -39,9 +38,9 @@ function Cart() {
     subTotalFormatted: formatPrice(product.price * product.amount),
   })) */
 
-  /*  const total = formatPrice(cart.reduce((sumTotal, product) => {
-     return sumTotal + product.price * product.amount;
-   }, 0)); */
+  const total = cart.reduce((sumTotal, product) => {
+    return sumTotal + product.priceNumber * product.amount;
+  }, 0);
 
   return (
     <Styled.Container>
@@ -63,19 +62,19 @@ function Cart() {
             {cart.map(product => (
               <Styled.ProductRow key={product.id}>
                 <td className="avatar-container">
-                  <img src={pikachuImg} alt="Imagem do Pokémon" />
+                  <img src={product.image} alt="Imagem do Pokémon" />
                 </td>
                 <td className="product-price-container">
                   <Styled.ProductPriceDataCell>
                     <span>{product.name}</span>
-                    <span>R$ {product.price},00</span>
+                    <span>R$ {product.price}</span>
                   </Styled.ProductPriceDataCell>
                 </td>
                 <td className="product-amount-container">
                   <Styled.AmountButton
                     type="button"
                     disabled={product.amount <= 1}
-                    onclick={() => handleDecrementProduct(product)}
+                    onclick={() => handleDecrementProduct(product.id)}
                   >
                     <FiMinusCircle size="18px" color={mixins.colors.text} />
                   </Styled.AmountButton>
@@ -94,12 +93,12 @@ function Cart() {
                   </Styled.AmountButton>
                 </td>
                 <td className="subtotal-container">
-                  <span>R$ {product.price * product.amount},00</span>
+                  <span>R$ {product.priceNumber * product.amount},00</span>
                 </td>
                 <td className="delete-button-container">
                   <Styled.DeleteButton
                     type="button"
-                    onclick={() => handleRemoveProduct(product.id)}
+                    onclick={() => handleRemoveProduct(product)}
                   >
                     <FiTrash size="22px" color="#EA4335"
                       className="trashIcon"
@@ -118,7 +117,7 @@ function Cart() {
                   </Button>
                   <Styled.TotalPriceWrapper>
                     <p>Total:</p>
-                    <strong>{/* {total} */}R$ 38.000,00</strong>
+                    <strong>R$ {total}{/* R$ 38.000,00 */},00</strong>
                   </Styled.TotalPriceWrapper>
                 </Styled.FootRowContentWrapper>
               </td>

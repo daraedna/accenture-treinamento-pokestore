@@ -9,29 +9,9 @@ import {
 const CartContext = createContext({});
 
 function CartProvider({ children }) {
-  const [cart, setCart] = useState(
-    [
-      {
-        id: 1,
-        name: 'Picachu',
-        amount: 1,
-        price: 200,
-      },
-      {
-        id: 2,
-        name: 'Charmander',
-        amount: 2,
-        price: 179.9,
-      },
-      {
-        id: 3,
-        name: 'Bulbasaur',
-        amount: 1,
-        price: 179.9,
-      }
-    ]
-
-    /* () => {
+  const [cart, setCart] = useState([]
+    /* 
+    () => {
     const storagedCart = localStorage.getItem('@PokeStore:cart');
 
     if (storagedCart) {
@@ -43,7 +23,7 @@ function CartProvider({ children }) {
 
   useEffect(() => {
     console.log(cart);
-  }, [])
+  }, [cart])
 
   const previousCartRef = useRef();
 
@@ -76,7 +56,6 @@ function CartProvider({ children }) {
         // talvez fazer a chamada a API aqui
         // usar async await nesse caso
         const product = item;
-
         const newProduct = {
           ...product,
           amount: 1,

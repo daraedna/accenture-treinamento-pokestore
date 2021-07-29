@@ -88,6 +88,10 @@ export const Styled = {
     font-weight: 700;
     border-bottom: 1px solid #DDDDDD;
 
+    img {
+      max-width: 8rem;
+    }
+
     @media screen and (min-width: 320px) and (max-width: 768px) {
       display: grid;
       grid-template-rows: repeat(3, 1fr);
@@ -124,6 +128,7 @@ export const Styled = {
         
         span:first-child {
           font-weight: 700;
+          text-transform: capitalize;
         }
       }
 
@@ -181,6 +186,10 @@ export const Styled = {
 
     &:active{
       filter: brightness(0.7);
+    }
+
+    &:disabled{
+      cursor: not-allowed;
     }
 
     @media screen and (min-width: 320px) and (max-width: 768px) {

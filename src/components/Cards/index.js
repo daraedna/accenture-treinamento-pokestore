@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import {ContainerCard} from './styles';
+import { ContainerCard } from './styles';
 import Button from '../Button';
 import IconType from '../../assets/types';
 
 import { apiPokemon } from '../../services/apiPokemon';
 import { mixins } from '../../styles/mixins';
+import { useCart } from '../../hooks/contexts/CartProvider';
 
 export default function Cards({ name }) {
   const [pokemon, setPokemon] = useState({});
   const [loading, setLoading] = useState(false);
+  const { addProductToCart } = useCart()
 
-  const loadPokemon = async() => {
+  const loadPokemon = async () => {
     setLoading(true);
     try {
       const response = await apiPokemon.get(`/pokemon/${name}/`)
@@ -19,7 +21,9 @@ export default function Cards({ name }) {
       setPokemon({
         id,
         image: sprites.other['official-artwork'].front_default,
+        name,
         price: `${base_experience},00`,
+        priceNumber: `${base_experience}`,
         type: types.map((pokemonType) => {
           const typeName = pokemonType.type.name;
 
@@ -41,11 +45,15 @@ export default function Cards({ name }) {
     loadPokemon()
   }, []);
 
+  const handleAddProduct = (product) => {
+    addProductToCart(product)
+  }
+
   return (
     <ContainerCard.Container>
       {!loading && pokemon && (
         <ContainerCard.Content>
-          <ContainerCard.Avatar src={pokemon.image} alt="Imagem Pokemon"/>
+          <ContainerCard.Avatar src={pokemon.image} alt="Imagem Pokemon" />
           <ContainerCard.Title>
             {name && name}
           </ContainerCard.Title>
@@ -60,7 +68,10 @@ export default function Cards({ name }) {
             R$ {pokemon.price}
           </ContainerCard.Price>
           <ContainerCard.Button>
-            <Button type="primary">
+            <Button
+              type="primary"
+              onClick={() => handleAddProduct(pokemon)}
+            >
               Adicionar ao Carrinho
             </Button>
           </ContainerCard.Button>
@@ -68,7 +79,7 @@ export default function Cards({ name }) {
       )}
 
       {loading && Object.keys(pokemon).length === 0 && (
-       <ContainerCard.Loading />
+        <ContainerCard.Loading />
       )}
     </ContainerCard.Container>
   )
