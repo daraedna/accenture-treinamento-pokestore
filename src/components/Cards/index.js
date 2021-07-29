@@ -43,7 +43,7 @@ export default function Cards({ name }) {
 
   return (
     <ContainerCard.Container>
-      {!loading && pokemon && (
+      {!loading && Object.keys(pokemon).length !== 0 && (
         <ContainerCard.Content>
           <ContainerCard.Avatar src={pokemon.image} alt="Imagem Pokemon"/>
           <ContainerCard.Title>
@@ -67,7 +67,7 @@ export default function Cards({ name }) {
         </ContainerCard.Content>
       )}
 
-      {loading && Object.keys(pokemon).length === 0 && (
+      {Object.keys(pokemon).length === 0 && loading && (
        <ContainerCard.Loading />
       )}
     </ContainerCard.Container>

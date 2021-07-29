@@ -1,9 +1,19 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import {mixins} from "../../styles/mixins";
-
+const loading = keyframes`
+    0% {
+        transform: translateX(-100%);
+    }
+    60% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+`
 export const ContainerCard = {
     Container: styled.div `
-        height: 400px;
+        height: 350px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -13,12 +23,13 @@ export const ContainerCard = {
         background-color: ${mixins.colors.white};
         border-radius: 15px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
-        width: 250px;
-        height: 340px;
+        width: 200px;
+        height: 300px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
         text-align: center;
+        align-content: center;
         cursor: pointer;
     `,
     Loading: styled.div `
@@ -26,24 +37,43 @@ export const ContainerCard = {
         background-color: ${mixins.colors.white};
         border-radius: 15px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
-        width: 250px;
+        width: 200px;
         height: 340px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
         text-align: center;
         cursor: pointer;
+        overflow: hidden;
+
+        ::after {
+            display: block;
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #ededed, transparent);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            transform: translateX(-100%);
+            z-index: 1;
+            animation: 2s ${loading} linear 0.5s infinite;
+            content: '';
+        }
     `,
     Avatar: styled.img `
-        width: 147px;
-        height: 147px;
-        margin: 10px 36px 0px 57px;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
     `,
     Title: styled.h1 `
         text-transform: capitalize;
         font-family: ${mixins.fonts.bold};
         font-size: ${mixins.typograph.title};
         color: ${mixins.colors.text};
+        margin-top: 10px;
     `,
     Price: styled.p `
         font-family: ${mixins.fonts.semi_bold};
@@ -52,7 +82,6 @@ export const ContainerCard = {
     `,
     Button: styled.span `
         text-align: center;
-        margin-bottom: 6px;
     `,
     ContainerIcon: styled.div`
         display: flex;
@@ -60,7 +89,6 @@ export const ContainerCard = {
         position: absolute;
         top: 5px;
         right: 10px;
-
     `,
     PokemonType: styled.div`
         display: flex;
