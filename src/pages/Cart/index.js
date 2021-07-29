@@ -1,9 +1,9 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
+import { useCart } from '../../hooks/contexts/CartProvider';
 import Table from 'react-bootstrap/Table';
 import Button from '../../components/Button';
 import { FiTrash, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
-import { useCart } from '../../hooks/contexts/CartProvider';
 
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
