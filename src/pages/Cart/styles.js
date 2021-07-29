@@ -5,7 +5,7 @@ import { mixins } from "../../styles/mixins";
 
 export const Styled = {
   Container: styled.div`
-    width: 100vw;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -88,6 +88,10 @@ export const Styled = {
     font-weight: 700;
     border-bottom: 1px solid #DDDDDD;
 
+    span:first-child {
+      text-transform: capitalize;
+    }
+
     img {
       max-width: 8rem;
     }
@@ -128,7 +132,6 @@ export const Styled = {
         
         span:first-child {
           font-weight: 700;
-          text-transform: capitalize;
         }
       }
 
@@ -180,7 +183,7 @@ export const Styled = {
 
     transition: 0.2s;
 
-    &:hover{
+    &:hover:not([disabled]){
       background-color: ${mixins.colors.greyHover};
     }
 

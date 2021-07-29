@@ -1,5 +1,5 @@
 export const { formatPrice } = new Intl.NumberFormat(
-  'pt-br', {
+  'pt-BR', {
   style: 'currency',
   currency: 'BRL',
-});
+}).format();

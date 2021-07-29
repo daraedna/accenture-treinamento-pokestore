@@ -9,21 +9,21 @@ import {
 const CartContext = createContext({});
 
 function CartProvider({ children }) {
-  const [cart, setCart] = useState([]
-    /* 
-    () => {
+  const [cart, setCart] = useState([]);
+  const [cartItemsNumber, setCartItemsNumber] = useState(0);
+
+  /* 
+    Se houver carrinho salvo no localStorage, 
+    será renderizado e persistido.
+  */
+  useEffect(() => {
     const storagedCart = localStorage.getItem('@PokeStore:cart');
 
     if (storagedCart) {
-      return JSON.parse(storagedCart);
+      const storagedCartJson = JSON.parse(storagedCart);
+      setCart(storagedCartJson)
     }
-
-    return [];
-  } */)
-
-  useEffect(() => {
-    console.log(cart);
-  }, [cart])
+  }, [])
 
   const previousCartRef = useRef();
 
@@ -32,13 +32,18 @@ function CartProvider({ children }) {
   });
 
   // Se o previousCartRef for null/undefined, retornará o cart
-  const cartPreviosValue = previousCartRef ?? cart;
+  const cartPreviousValue = previousCartRef ?? cart;
 
+  /* 
+    Inserindo o carrinho atualizado no localStorage.
+    Setando o numero de itens do carrinho
+  */
   useEffect(() => {
-    if (cartPreviosValue !== cart) {
+    if (cartPreviousValue !== cart) {
       localStorage.setItem('@PokeStore:cart', JSON.stringify(cart));
     }
-  }, [cart, cartPreviosValue]);
+    setCartItemsNumber(cart.length);
+  }, [cart, cartPreviousValue]);
 
   const addProductToCart = (item) => {
     try {
@@ -79,7 +84,7 @@ function CartProvider({ children }) {
         updatedCart.splice(productIndex, 1);
         setCart(updatedCart);
       } else {
-        throw Error("Produto não removido")
+        throw Error()
       }
     } catch (error) {
       alert("Erro na remoção do produto")
@@ -88,10 +93,6 @@ function CartProvider({ children }) {
 
   const updateProductAmount = ({ productId, amount }) => {
     try {
-      if (amount <= 0) {
-        return;
-      }
-
       const updatedCart = [...cart];
       const productExists = updatedCart.find(product => product.id === productId);
 
@@ -99,7 +100,7 @@ function CartProvider({ children }) {
         productExists.amount = amount;
         setCart(updatedCart);
       } else {
-        throw Error("Quantidade não atualizada")
+        throw Error()
       }
     } catch (error) {
       alert("Erro na atualização da quantidade do produto");
@@ -113,7 +114,8 @@ function CartProvider({ children }) {
         cart,
         addProductToCart,
         removeProductFromCart,
-        updateProductAmount
+        updateProductAmount,
+        cartItemsNumber
       }}
     >
       {children}
