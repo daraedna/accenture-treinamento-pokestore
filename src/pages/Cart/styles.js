@@ -5,7 +5,7 @@ import { mixins } from "../../styles/mixins";
 
 export const Styled = {
   Container: styled.div`
-    width: 100vw;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -88,6 +88,14 @@ export const Styled = {
     font-weight: 700;
     border-bottom: 1px solid #DDDDDD;
 
+    span:first-child {
+      text-transform: capitalize;
+    }
+
+    img {
+      max-width: 8rem;
+    }
+
     @media screen and (min-width: 320px) and (max-width: 768px) {
       display: grid;
       grid-template-rows: repeat(3, 1fr);
@@ -118,8 +126,11 @@ export const Styled = {
         padding: 0;
         margin: 0 auto;
 
-        span:first-child {
+        span {
           text-align: center;
+        }
+        
+        span:first-child {
           font-weight: 700;
         }
       }
@@ -172,12 +183,16 @@ export const Styled = {
 
     transition: 0.2s;
 
-    &:hover{
+    &:hover:not([disabled]){
       background-color: ${mixins.colors.greyHover};
     }
 
     &:active{
       filter: brightness(0.7);
+    }
+
+    &:disabled{
+      cursor: not-allowed;
     }
 
     @media screen and (min-width: 320px) and (max-width: 768px) {
