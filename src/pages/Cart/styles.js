@@ -56,6 +56,17 @@ export const Styled = {
     }
   `,
 
+  Content: styled.div`
+    width: 100%;
+    height: 80%;
+    margin-bottom: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  `,
+
   TableWrapper: styled.div`
     border-radius: 5px;
     margin: 0 auto;
@@ -65,18 +76,18 @@ export const Styled = {
     overflow: auto;
     box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
     background-color: ${mixins.colors.white};
-    
+
     @media screen and (min-width: 320px) and (max-width: 768px) {
       width: 100%;
       max-width: 35rem;
       padding: 0;
       margin-bottom: 2rem;
-      
+
       .table-head {
         display: none;
       }
     }
-    
+
     @media screen and (min-width: 769px) and (max-width:1024px) {
       width: 100%;
       max-width: 50rem;
@@ -115,7 +126,7 @@ export const Styled = {
         grid-column: 2;
         padding: 0;
         margin: 0 auto;
-        
+
         img {
           max-width: 85px;
         }
@@ -130,7 +141,7 @@ export const Styled = {
         span {
           text-align: center;
         }
-        
+
         span:first-child {
           font-weight: 700;
         }
