@@ -7,6 +7,8 @@ import { MdKeyboardArrowRight } from 'react-icons/md';
 
 import { Styled } from './styles';
 import { mixins } from '../../styles/mixins';
+import Navbar from '../../components/NavBar';
+import Footer from '../../components/Footer';
 
 function Home() {
   const [pokemons, setPokemons] = useState([]);
@@ -61,7 +63,9 @@ function Home() {
   }, [offset])
 
   return (
+    <>
     <Styled.Container>
+      <Navbar />
       {loading && <Loading />}
 
       {!loading && pokemons.length !== 0 &&
@@ -105,7 +109,9 @@ function Home() {
         </Styled.ContainerArrow>
       </>
       }
+      <Footer />
     </Styled.Container>
+  </>
   )
 }
 

@@ -15,7 +15,6 @@ export function Navbar() {
   const handleClick = () => {
     SignOut();
   }
-  console.log(cartItemsNumber)
 
   return (
     <Styled.Navbar>
@@ -23,7 +22,7 @@ export function Navbar() {
         <Styled.Logo src={Logo} />
       </Styled.ContainerLogo>
       <Styled.NavArea>
-        <Styled.NavButton to="/cart">
+        <Styled.NavButton to={auth ? "/cart" : "/login"}>
           <ShoppingCartOutlinedIcon color={mixins.colors.primary} />
           <Styled.CartLabel>
             {cartItemsNumber}
@@ -32,9 +31,11 @@ export function Navbar() {
         <Styled.NavButton to={auth ? "/profile" : "/login"}>
           <AccountCircleOutlinedIcon color={mixins.colors.primary} />
         </Styled.NavButton>
-        <Styled.LogOut onClick={handleClick}>
-          <ExitToAppOutlinedIcon color={mixins.colors.primary} />
-        </Styled.LogOut>
+        {auth &&
+          <Styled.LogOut onClick={handleClick}>
+            <ExitToAppOutlinedIcon color={mixins.colors.primary} />
+          </Styled.LogOut>
+        }
       </Styled.NavArea>
     </Styled.Navbar>
   )
