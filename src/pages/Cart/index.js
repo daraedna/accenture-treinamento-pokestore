@@ -1,22 +1,32 @@
-import React from 'react';
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import { useCart } from '../../hooks/contexts/CartProvider';
 import Table from 'react-bootstrap/Table';
 import Button from '../../components/Button';
+import ModalComponent from '../../components/Modal';
 import { FiTrash, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
+import successCartImg from '../../assets/success-cart.svg';
 
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
 
 function Cart() {
-  const { cart,
+  const [showModal, setShowModal] = useState(false);
+  const {
+    cart,
     updateProductAmount,
     removeProductFromCart,
-    cartItemsNumber
+    cartItemsNumber,
+    setEmptyCart
   } = useCart();
 
   const history = useHistory();
   const handleClickBackToHome = () => history.push('/home');
+
+  function handleEmptyCart() {
+    handleClickBackToHome();
+    setEmptyCart();
+  }
 
   function handleIncrementProduct(product) {
     updateProductAmount({
@@ -32,7 +42,7 @@ function Cart() {
     });
   }
 
-  const handleRemoveProduct = (productId) => {
+  function handleRemoveProduct(productId) {
     removeProductFromCart(productId);
   }
 
@@ -131,9 +141,29 @@ function Cart() {
                 <tr>
                   <td className="foot-row" colSpan="5">
                     <Styled.FootRowContentWrapper>
-                      <Button type="primary">
+                      <Button
+                        type="primary"
+                        onClick={() => setShowModal(true)}
+                      >
                         Finzalizar Pedido
                       </Button>
+
+                      <ModalComponent
+                        show={showModal}
+                        onHide={() => setShowModal(false)}
+                      >
+                        <img src={successCartImg} alt="Compra bem sucedida!" />
+                        <h4>Compra finalizada com sucesso!</h4>
+                        <p>Em breve você receberá um
+                          e-mail com todos os detalhes.</p>
+                        <Button
+                          type="primary"
+                          onClick={handleEmptyCart}
+                        >
+                          Voltar para Home
+                        </Button>
+                      </ModalComponent>
+
                       <Styled.TotalPriceWrapper>
                         <p>Total:</p>
                         <strong>{priceFormat(total)}</strong>

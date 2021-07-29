@@ -107,6 +107,9 @@ function CartProvider({ children }) {
     }
   }
 
+  const setEmptyCart = () => {
+    setCart([]);
+  }
 
   return (
     <CartContext.Provider
@@ -115,7 +118,8 @@ function CartProvider({ children }) {
         addProductToCart,
         removeProductFromCart,
         updateProductAmount,
-        cartItemsNumber
+        cartItemsNumber,
+        setEmptyCart
       }}
     >
       {children}
