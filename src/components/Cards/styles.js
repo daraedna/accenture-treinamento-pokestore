@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import {mixins} from "../../styles/mixins";
+import { mixins } from "../../styles/mixins";
 const loading = keyframes`
     0% {
         transform: translateX(-100%);
@@ -12,13 +12,13 @@ const loading = keyframes`
     }
 `
 export const ContainerCard = {
-    Container: styled.div `
+    Container: styled.div`
         height: 350px;
         display: flex;
         justify-content: center;
         align-items: center;
     `,
-    Content: styled.div `
+    Content: styled.div`
         position: relative;
         background-color: ${mixins.colors.white};
         border-radius: 15px;
@@ -32,7 +32,7 @@ export const ContainerCard = {
         align-content: center;
         cursor: pointer;
     `,
-    Loading: styled.div `
+    Loading: styled.div`
         position: relative;
         background-color: ${mixins.colors.white};
         border-radius: 15px;
@@ -63,24 +63,24 @@ export const ContainerCard = {
             content: '';
         }
     `,
-    Avatar: styled.img `
+    Avatar: styled.img`
         width: 120px;
         height: 120px;
         margin: 0 auto;
     `,
-    Title: styled.h1 `
+    Title: styled.h1`
         text-transform: capitalize;
         font-family: ${mixins.fonts.bold};
         font-size: ${mixins.typograph.title};
         color: ${mixins.colors.text};
         margin-top: 10px;
     `,
-    Price: styled.p `
+    Price: styled.p`
         font-family: ${mixins.fonts.semi_bold};
         font-size: ${mixins.typograph.subTitle};
         color: ${mixins.colors.text};
     `,
-    Button: styled.span `
+    Button: styled.span`
         text-align: center;
     `,
     ContainerIcon: styled.div`
