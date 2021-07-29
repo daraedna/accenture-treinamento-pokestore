@@ -15,11 +15,38 @@ export const Styled = {
     `,
     Card_Container: styled.div `
         width: 100%;
-        background-color: black;
-        margin: -10px auto;
+        height:100%;
+        overflow-y: scroll;
+        background-color: ${mixins.colors.background};
+        h1 {
+            color: black;
+            font-weight: ${mixins.fonts.normal};
+            font-size: ${mixins.typograph.title};
+            text-align: center;
+        }
+
+        @media screen and (min-width: 768px) {
+            background-color: ${mixins.colors.background};
+            h1 {
+                font-size: 28px;
+            }
+        }
+        
+        @media screen and (min-width: 1024px) {
+            background-color: ${mixins.colors.background};
+            h1 {
+                font-size: 32px;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            background-color: ${mixins.colors.background};
+            h1 {
+                font-size: 36px;
+            }
+        }
     `,
     Content: styled.div `
-    overflow:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,9 +54,17 @@ export const Styled = {
     padding: 1rem;
     `,
     Avatar_Container: styled.div `
-        margin: 0 0 1rem 0;
+        margin: 0 0 1.5rem 0;
     img {
-        width: 9.5rem;
+        width: 4rem;
+
+        @media screen and (min-width: 768px) {
+            width: 6rem;
+        }
+
+        @media screen and (min-width: 1024px) {
+            width: 8rem;
+        }
     }
     `,
 
@@ -50,6 +85,34 @@ export const Styled = {
         background-color: ${mixins.colors.white};
         height: 2rem;
     }
+    @media screen and (min-width: 768px) {
+        input {
+            width: 18rem;
+        }
+
+        select {
+            width: 18rem;
+        }
+
+    }
+
+    @media screen and (min-width: 1024px) {
+        input {
+            width: 20rem;
+        }
+        select {
+            width: 20rem;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        input {
+            width: 22rem;
+        }
+        select {
+            width: 22rem;
+        }
+    }
     `,
 
     Name_Container: styled.div `
@@ -58,6 +121,24 @@ export const Styled = {
     gap: 0.5rem;
     color: ${mixins.colors.text};
     font-size:${mixins.typograph.form};
+
+    @media screen and (min-width: 768px) {
+        label {
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        label {
+            font-size:19px;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        label {
+            font-size:22px;
+        }
+    }
 
     input {
         width: 100%;
@@ -70,6 +151,25 @@ export const Styled = {
        color: ${mixins.colors.text};
        font-size:${mixins.typograph.form};
         gap: 0.5rem;
+
+        @media screen and (min-width: 768px) {
+        label {
+            font-size:16px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        label {
+            font-size: 19px;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        label {
+            font-size: 22px;
+        }
+    }
+    
     `,
     Origin: styled.div `
        width: 100%;
@@ -78,6 +178,24 @@ export const Styled = {
        color: ${mixins.colors.text};
        font-size:${mixins.typograph.form};
         gap: 0.5rem;
+
+        @media screen and (min-width: 768px) {
+        label {
+            font-size:16px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        label {
+            font-size: 19px;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        label {
+            font-size: 22px;
+        }
+    }
     `,
     Function: styled.div `
         width: 100%;
@@ -87,6 +205,24 @@ export const Styled = {
        font-size:${mixins.typograph.form};
         gap: 0.5rem;
         margin: 0 0 0.2rem 0;
+
+        @media screen and (min-width: 768px) {
+        label {
+            font-size:16px;
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        label {
+            font-size: 19px;
+        }
+    }
+
+    @media screen and (min-width: 1200px) {
+        label {
+            font-size: 22px;
+        }
+    }
     `,
 
     Buttons: styled.div `
@@ -96,10 +232,26 @@ export const Styled = {
         justify-content: center;
         gap: 0.5rem;
 
-    button:first-child {
+        @media screen and (min-width: 768px) {
+        button {
+            font-size: 16px;
+            width: 17rem;
+        }
     }
-    button {
 
+    @media screen and (min-width: 1024px) {
+        button {
+            font-size: 19px;
+            width: 19rem;
+        }
     }
+
+    @media screen and (min-width: 1200px) {
+        button {
+            font-size: 22px;
+            width: 21rem;
+        }
+    }
+
     `
 }

@@ -17,10 +17,7 @@ export default function Routes() {
         <Styled.AppLayout>
             {auth && <NavBar />}
             <Switch>
-<<<<<<< HEAD
                 <Route path="/profile" component={Profile} />
-=======
->>>>>>> f49228c19f2df556450ee6aefed93e6d58cbcd86
                    {auth ?
                         <>
                             <Route path="/" exact component={Home} />

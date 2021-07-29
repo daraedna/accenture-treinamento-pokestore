@@ -7,7 +7,7 @@ export default function Profile() {
   return (
     <Styled.Container>
       <Styled.Card_Container>
-        <h1>Meu perfil</h1>
+        <h1 className="profile_text">Meu perfil</h1>
       <Styled.Content>
       
       <Styled.Avatar_Container>
