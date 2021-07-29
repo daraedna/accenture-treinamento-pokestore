@@ -14,7 +14,7 @@ export const Styled = {
     height: 100%;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
-  `,
+    overflow: auto;
+`,
 
 }

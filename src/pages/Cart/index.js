@@ -12,6 +12,8 @@ import successCartImg from '../../assets/success-cart.svg';
 
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
+import Navbar from "../../components/NavBar";
+import Footer from "../../components/Footer";
 
 function Cart() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -73,8 +75,9 @@ function Cart() {
 
   return (
     <Styled.Container>
+      <Navbar />
       {cartItemsNumber === 0 ?
-        <>
+        <Styled.Content>
           <h1>Seu carrinho está vazio =(</h1>
           <Button
             type="primary"
@@ -82,9 +85,9 @@ function Cart() {
           >
             Voltar para Home
           </Button>
-        </>
+        </Styled.Content>
         :
-        <>
+        <Styled.Content>
           <h1>Meu carrinho</h1>
           <Styled.TableWrapper>
             <Table
@@ -180,7 +183,10 @@ function Cart() {
                       {/* Success modal */}
                       <ModalComponent
                         show={showSuccessModal}
-                        onHide={() => setShowSuccessModal(false)}
+                        onHide={() => {
+                          setShowSuccessModal(false)
+                          setEmptyCart()
+                        }}
                       >
                         <img src={successCartImg} alt="Compra bem sucedida!" />
                         <h4>Compra finalizada com sucesso!</h4>
@@ -204,8 +210,9 @@ function Cart() {
               </tfoot>
             </Table>
           </Styled.TableWrapper>
-        </>
+        </Styled.Content>
       }
+      <Footer />
     </Styled.Container >
   );
 }

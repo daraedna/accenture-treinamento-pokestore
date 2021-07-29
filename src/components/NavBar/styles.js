@@ -4,6 +4,7 @@ import { mixins } from '../../styles/mixins';
 
 export const Styled = {
   Navbar: styled.nav`
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
