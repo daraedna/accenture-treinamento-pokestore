@@ -4,6 +4,7 @@ import { mixins } from '../../styles/mixins';
 
 export const Styled = {
   Navbar: styled.nav`
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -33,6 +34,7 @@ export const Styled = {
   `,
 
   NavButton: styled(Link)`
+    position: relative;
     background: none;
     border: none;
     display: flex;
@@ -42,6 +44,21 @@ export const Styled = {
     :hover {
       color: ${mixins.colors.text};
     }
+  `,
+
+  CartLabel: styled.div`
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: ${mixins.colors.secondary};
+    color: ${mixins.colors.white};
+    border-radius: 50%;
+    font-size: ${mixins.typograph.paragraph};
+    width: 16px;
+    height: 16px;
   `,
 
   LogOut: styled.button`

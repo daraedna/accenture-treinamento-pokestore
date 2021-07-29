@@ -2,10 +2,13 @@ import React from 'react';
 import {Styled} from './styles'
 import profile_img from '../../assets/profile_img.png'
 import Button from '../../components/Button'
+import {Navbar} from '../../components/NavBar'
+// import Footer from '../../components/Footer'
 
 export default function Profile() {
   return (
     <Styled.Container>
+      <Navbar/>
       <Styled.Card_Container>
         <h1 className="profile_text">Meu perfil</h1>
       <Styled.Content>
@@ -54,6 +57,7 @@ export default function Profile() {
       </div>
       </Styled.Content>
       </Styled.Card_Container>
+      {/* <Footer/> */}
     </Styled.Container>
   );
 }

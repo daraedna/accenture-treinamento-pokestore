@@ -5,7 +5,7 @@ import { mixins } from "../../styles/mixins";
 
 export const Styled = {
   Container: styled.div`
-    width: 100vw;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -56,26 +56,38 @@ export const Styled = {
     }
   `,
 
+  Content: styled.div`
+    width: 100%;
+    height: 80%;
+    margin-bottom: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  `,
+
   TableWrapper: styled.div`
     border-radius: 5px;
     margin: 0 auto;
+    margin-bottom: 2rem;
     width: 53rem;
     padding: 2rem;
     overflow: auto;
     box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
     background-color: ${mixins.colors.white};
-    
+
     @media screen and (min-width: 320px) and (max-width: 768px) {
       width: 100%;
       max-width: 35rem;
       padding: 0;
       margin-bottom: 2rem;
-      
+
       .table-head {
         display: none;
       }
     }
-    
+
     @media screen and (min-width: 769px) and (max-width:1024px) {
       width: 100%;
       max-width: 50rem;
@@ -87,6 +99,14 @@ export const Styled = {
     font-size: ${mixins.typograph.subTitle};
     font-weight: 700;
     border-bottom: 1px solid #DDDDDD;
+
+    span:first-child {
+      text-transform: capitalize;
+    }
+
+    img {
+      max-width: 8rem;
+    }
 
     @media screen and (min-width: 320px) and (max-width: 768px) {
       display: grid;
@@ -106,7 +126,7 @@ export const Styled = {
         grid-column: 2;
         padding: 0;
         margin: 0 auto;
-        
+
         img {
           max-width: 85px;
         }
@@ -118,8 +138,11 @@ export const Styled = {
         padding: 0;
         margin: 0 auto;
 
-        span:first-child {
+        span {
           text-align: center;
+        }
+
+        span:first-child {
           font-weight: 700;
         }
       }
@@ -172,12 +195,16 @@ export const Styled = {
 
     transition: 0.2s;
 
-    &:hover{
+    &:hover:not([disabled]){
       background-color: ${mixins.colors.greyHover};
     }
 
     &:active{
       filter: brightness(0.7);
+    }
+
+    &:disabled{
+      cursor: not-allowed;
     }
 
     @media screen and (min-width: 320px) and (max-width: 768px) {

@@ -6,31 +6,33 @@ import Login from '../pages/Login';
 import Profile from '../pages/Profile';
 import Cart from '../pages/Cart';
 import NotFound from '../pages/NotFound';
-import Footer from '../components/Footer';
 import { Styled } from './styles';
-import NavBar from '../components/NavBar';
 
 export default function Routes() {
     const { auth } = useAuth();
 
     return (
         <Styled.AppLayout>
-            {auth && <NavBar />}
-            <Switch>
-                <Route path="/profile" component={Profile} />
-                   {auth ?
+            <Styled.PageLayout>
+                <Switch>
+                    {auth ?
                         <>
                             <Route path="/" exact component={Home} />
                             <Route path="/home" component={Home} />
                             <Route path="/cart" component={Cart} />
                             <Route path="/profile" component={Profile} />
+                            <Route path="/404" component={NotFound} />
                         </>
-                    :
-                    <Route path="/" exact component={Login} />
-                  }
-                <Redirect from="*" to={NotFound} />
-            </Switch>
-            <Footer />
+                        :
+                        <>
+                            <Route path="/" exact component={Home} />
+                            <Route path="/home" component={Home} />
+                            <Route path="/login"  component={Login} />
+                            <Route path="/404" component={NotFound} />
+                        </>
+                    }
+                </Switch>
+            </Styled.PageLayout>
         </Styled.AppLayout>
     )
 }
