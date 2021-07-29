@@ -1,17 +1,23 @@
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { useCart } from '../../hooks/contexts/CartProvider';
+
 import Table from 'react-bootstrap/Table';
 import Button from '../../components/Button';
 import ModalComponent from '../../components/Modal';
+
 import { FiTrash, FiPlusCircle, FiMinusCircle } from "react-icons/fi";
+import { BsExclamationCircle } from "react-icons/bs";
 import successCartImg from '../../assets/success-cart.svg';
 
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
 
 function Cart() {
-  const [showModal, setShowModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [productDeletedId, setProductDeletedId] = useState(0);
+
   const {
     cart,
     updateProductAmount,
@@ -42,8 +48,14 @@ function Cart() {
     });
   }
 
-  function handleRemoveProduct(productId) {
-    removeProductFromCart(productId);
+  function handleShowModalDelete(productId) {
+    setShowDeleteModal(true)
+    setProductDeletedId(productId);
+  }
+
+  function handleRemoveProduct() {
+    removeProductFromCart(productDeletedId);
+    setShowDeleteModal(false)
   }
 
   const total = cart.reduce((sumTotal, product) => {
@@ -127,12 +139,29 @@ function Cart() {
                     <td className="delete-button-container">
                       <Styled.DeleteButton
                         type="button"
-                        onClick={() => handleRemoveProduct(product.id)}
+                        onClick={() => handleShowModalDelete(product.id)}
                       >
                         <FiTrash size="22px" color="#EA4335"
                           className="trashIcon"
                         />
                       </Styled.DeleteButton>
+                      {/* Delete item modal */}
+                      <ModalComponent
+                        show={showDeleteModal}
+                        onHide={() => setShowDeleteModal(false)}
+                      >
+                        {/* <img src={successCartImg} alt="Compra bem sucedida!" /> */}
+                        <BsExclamationCircle size="30px" color="#EA4335"
+                        />
+                        <h4>Deseja excluir o item do carrinho?</h4>
+                        <Button
+                          type="secondary"
+                          onClick={() => handleRemoveProduct()}
+                        >
+                          Sim, desejo excluir
+                        </Button>
+                      </ModalComponent>
+
                     </td>
                   </Styled.ProductRow>
                 ))}
@@ -143,14 +172,15 @@ function Cart() {
                     <Styled.FootRowContentWrapper>
                       <Button
                         type="primary"
-                        onClick={() => setShowModal(true)}
+                        onClick={() => setShowSuccessModal(true)}
                       >
                         Finzalizar Pedido
                       </Button>
 
+                      {/* Success modal */}
                       <ModalComponent
-                        show={showModal}
-                        onHide={() => setShowModal(false)}
+                        show={showSuccessModal}
+                        onHide={() => setShowSuccessModal(false)}
                       >
                         <img src={successCartImg} alt="Compra bem sucedida!" />
                         <h4>Compra finalizada com sucesso!</h4>
