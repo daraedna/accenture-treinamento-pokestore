@@ -70,6 +70,7 @@ export const Styled = {
   TableWrapper: styled.div`
     border-radius: 5px;
     margin: 0 auto;
+    margin-bottom: 2rem;
     width: 53rem;
     padding: 2rem;
     overflow: auto;
