@@ -4,6 +4,9 @@ import Loading from '../../components/Loading';
 import { apiPokemon } from '../../services/apiPokemon';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import { MdKeyboardArrowRight } from 'react-icons/md';
+import { Carousel } from 'react-bootstrap';
+import banner1 from '../../assets/banner1.png';
+import banner2 from '../../assets/banner2.png';
 
 import { Styled } from './styles';
 import Navbar from '../../components/NavBar';
@@ -65,6 +68,23 @@ function Home() {
     <>
     <Styled.Container>
       <Navbar />
+
+      <Carousel indicators={false}>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={banner1}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={banner2}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
       {loading && <Loading />}
 
       {!loading && pokemons.length !== 0 &&
