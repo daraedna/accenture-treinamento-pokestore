@@ -10,7 +10,7 @@ import { useCart } from '../../hooks/contexts/CartProvider';
 
 export function Navbar() {
   const { auth, SignOut } = useAuth();
-  const { cartItemsNumber } = useCart();
+  const { totalProductsNumber } = useCart();
 
   const handleClick = () => {
     SignOut();
@@ -25,7 +25,7 @@ export function Navbar() {
         <Styled.NavButton to={auth ? "/cart" : "/login"}>
           <ShoppingCartOutlinedIcon color={mixins.colors.primary} />
           <Styled.CartLabel>
-            {cartItemsNumber}
+            {totalProductsNumber}
           </Styled.CartLabel>
         </Styled.NavButton>
         <Styled.NavButton to={auth ? "/profile" : "/login"}>
