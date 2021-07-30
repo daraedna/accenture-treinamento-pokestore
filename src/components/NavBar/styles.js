@@ -13,11 +13,6 @@ export const Styled = {
     height: 80px;
     padding: 0px 64px;
     border-bottom: 1px solid ${mixins.colors.card};
-
-    @media screen and (max-width: 768px) {
-      padding: 0px 20px;
-    }
-
   `,
 
   ContainerLogo: styled(Link)`
