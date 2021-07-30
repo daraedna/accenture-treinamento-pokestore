@@ -158,7 +158,10 @@ function Cart() {
                     <Styled.FootRowContentWrapper>
                       <Button
                         type="primary"
-                        onClick={() => setShowSuccessModal(true)}
+                        onClick={() => {
+                          setShowSuccessModal(true)
+                          setEmptyCart()
+                        }}
                       >
                         Finzalizar Pedido
                       </Button>
