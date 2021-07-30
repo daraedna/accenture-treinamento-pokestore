@@ -12,7 +12,6 @@ import successCartImg from '../../assets/success-cart.svg';
 
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
-import Navbar from "../../components/NavBar";
 import Footer from "../../components/Footer";
 
 function Cart() {
@@ -75,7 +74,6 @@ function Cart() {
 
   return (
     <Styled.Container>
-      <Navbar />
       {cartItemsNumber === 0 ?
         <Styled.Content>
           <h1>Seu carrinho está vazio =(</h1>
