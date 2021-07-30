@@ -7,8 +7,9 @@ import {Navbar} from '../../components/NavBar'
 
 export default function Profile() {
   return (
-    <Styled.Container>
+    <>
       <Navbar/>
+    <Styled.Container>
       <Styled.Card_Container>
         <h1 className="profile_text">Meu perfil</h1>
       <Styled.Content>
@@ -21,20 +22,28 @@ export default function Profile() {
         <Styled.Form onSubmit="">
 
           <Styled.Name_Container>
-            <label>Nome Completo</label>
-            <input/>
+            <label htmlFor="input1">Nome</label>
+            <input id="input1"/>
           </Styled.Name_Container>
 
-          <Styled.Sex_Container>
+          <Styled.Function>
+            <label htmlFor="input2">E-mail</label>
+            <input id="input2"/>
+          </Styled.Function>
+
+          <Styled.Password_Container>
+            <label htmlFor="input3">Senha</label>
+            <input  id="input3"/>
+          </Styled.Password_Container>
+
+          {/* <Styled.Sex_Container>
             <label>Sexo</label>
             <select>
               <option>Masculino</option>
               <option>Feminino</option>
             </select>
-          </Styled.Sex_Container>
+          </Styled.Sex_Container> */}
 
-
-      
         <Styled.Origin>
             <label>Origem</label>
             <select>
@@ -43,14 +52,9 @@ export default function Profile() {
             </select>
           </Styled.Origin>
 
-          <Styled.Function>
-            <label>Função</label>
-            <input/>
-          </Styled.Function>
       
       <Styled.Buttons>
-      <Button type="primary">Salvar</Button>
-      <Button type="secondary">Cancelar</Button>
+      <Button type="primary">Editar</Button>
       </Styled.Buttons>
 
         </Styled.Form>
@@ -59,5 +63,6 @@ export default function Profile() {
       </Styled.Card_Container>
       {/* <Footer/> */}
     </Styled.Container>
+    </>
   );
 }
