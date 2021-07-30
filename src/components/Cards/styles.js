@@ -24,7 +24,7 @@ export const Styled = {
         border-radius: 15px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
         width: 200px;
-        height: 300px;
+        height: 310px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
@@ -38,7 +38,7 @@ export const Styled = {
         border-radius: 15px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
         width: 200px;
-        height: 340px;
+        height: 310px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
@@ -74,6 +74,10 @@ export const Styled = {
         font-size: ${mixins.typograph.title};
         color: ${mixins.colors.text};
         margin-top: 10px;
+        height: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
     `,
     Price: styled.p`
         font-family: ${mixins.fonts.semi_bold};
