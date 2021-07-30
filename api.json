@@ -8,6 +8,11 @@
             "last_name": "George",
             "city": "Recife",
             "access_token": "liberado"
+        },
+        {
+            "id": 2,
+            "login": "admin",
+            "password": "admin"
         }
     ]
 }
