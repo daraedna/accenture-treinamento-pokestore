@@ -7,7 +7,6 @@ import Image from 'react-bootstrap/Image';
 import { Styled } from './styles';
 import Logo from '../../assets/logo.png';
 import Button from '../../components/Button';
-import Footer from '../../components/Footer';
 
 function Login() {
   const { SignIn, error } = useAuth();
@@ -33,47 +32,45 @@ function Login() {
   return (
     <>
       <Styled.Container>
-          <Styled.Content>
-              <Image src={Logo} rounded width={200} className="mt-4" />
-              <Styled.FormContent onSubmit={formik.handleSubmit}>
-                  <Form.Group className="mb-4">
-                      <Form.Label>Login</Form.Label>
-                      <Form.Control
-                      id="login"
-                      name="login"
-                      placeholder="Seu login"
-                      onChange={formik.handleChange}
-                      />
-                  </Form.Group>
-                  <Form.Group className="mb-4">
-                  <Form.Label>Senha</Form.Label>
-                  <Form.Control
-                      id="password"
-                      name="password"
-                      type="password"
-                      placeholder="Sua Senha"
-                      onChange={formik.handleChange}
-                  />
-                  </Form.Group>
-                  {AppError}
-                  <Styled.ButtonLoginContent>
-                      <Button type="primary">
-                          Fazer login
-                      </Button>
-                  </Styled.ButtonLoginContent>
-              </Styled.FormContent>
-              <Styled.ButtonContent>
-                  <Button type="text">
-                      Esqueci a senha
-                  </Button>
-                  <Button type="secondary">
-                      Cadastre-se
-                  </Button>
-              </Styled.ButtonContent>
-          </Styled.Content>
+        <Styled.Content>
+          <Image src={Logo} rounded width={200} className="mt-4" />
+          <Styled.FormContent onSubmit={formik.handleSubmit}>
+            <Form.Group className="mb-4">
+              <Form.Label>Login</Form.Label>
+              <Form.Control
+                id="login"
+                name="login"
+                placeholder="Seu login"
+                onChange={formik.handleChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-4">
+              <Form.Label>Senha</Form.Label>
+              <Form.Control
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Sua Senha"
+                onChange={formik.handleChange}
+              />
+            </Form.Group>
+            {AppError}
+            <Styled.ButtonLoginContent>
+              <Button type="primary">
+                Fazer login
+              </Button>
+            </Styled.ButtonLoginContent>
+            <Styled.ButtonContent>
+              <Button type="text">
+                Esqueci a senha
+              </Button>
+              <Button type="secondary">
+                Cadastre-se
+              </Button>
+            </Styled.ButtonContent>
+          </Styled.FormContent>
+        </Styled.Content>
       </Styled.Container>
-
-      <Footer />
     </>
   );
 }

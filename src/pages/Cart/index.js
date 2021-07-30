@@ -12,8 +12,6 @@ import successCartImg from '../../assets/success-cart.svg';
 
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
-import Navbar from "../../components/NavBar";
-import Footer from "../../components/Footer";
 
 function Cart() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -75,7 +73,6 @@ function Cart() {
 
   return (
     <Styled.Container>
-      <Navbar />
       {cartItemsNumber === 0 ?
         <Styled.Content>
           <h1>Seu carrinho está vazio =(</h1>
@@ -209,7 +206,6 @@ function Cart() {
           Voltar para Home
         </Button>
       </ModalComponent>
-      <Footer />
     </Styled.Container >
   );
 }

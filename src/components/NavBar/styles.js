@@ -4,6 +4,7 @@ import { mixins } from '../../styles/mixins';
 
 export const Styled = {
   Navbar: styled.nav`
+    position: fixed;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -13,6 +14,12 @@ export const Styled = {
     height: 80px;
     padding: 0px 64px;
     border-bottom: 1px solid ${mixins.colors.card};
+    background-color: ${mixins.colors.background};
+
+    @media screen and (max-width: 768px) {
+      padding: 0px 20px;
+    }
+
   `,
 
   ContainerLogo: styled(Link)`
