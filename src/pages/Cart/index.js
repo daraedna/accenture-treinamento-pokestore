@@ -12,7 +12,6 @@ import successCartImg from '../../assets/success-cart.svg';
 
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
-import Footer from "../../components/Footer";
 
 function Cart() {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -207,7 +206,6 @@ function Cart() {
           Voltar para Home
         </Button>
       </ModalComponent>
-      <Footer />
     </Styled.Container >
   );
 }

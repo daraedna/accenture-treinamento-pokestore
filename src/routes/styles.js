@@ -14,8 +14,7 @@ export const Styled = {
     //height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: 80px;
+    margin-top: ${props => !props.loginPage ? "80px" : "0"};
     overflow: auto;
 `,
-
 }

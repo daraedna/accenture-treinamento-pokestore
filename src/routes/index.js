@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import { useAuth } from '../hooks/contexts/AuthProvider';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
@@ -12,11 +12,12 @@ import Footer from '../components/Footer';
 
 export default function Routes() {
     const { auth } = useAuth();
+    let isloginPage = useRouteMatch("/login");
 
     return (
         <Styled.AppLayout>
-            {auth && <Navbar />}
-            <Styled.PageLayout>
+            {!isloginPage && <Navbar />}
+            <Styled.PageLayout loginPage={isloginPage}>
                 <Switch>
                     {auth ?
                         <>

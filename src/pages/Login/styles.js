@@ -7,7 +7,7 @@ import bg from '../../assets/bg.gif';
 export const Styled = {
     Container: styled.div`
         width: 100%;
-        height: 100%;
+        height: 100vh;
         background: url(${bg}) no-repeat;
         background-size: cover;
         display: flex;
@@ -25,9 +25,15 @@ export const Styled = {
         align-items: center;
         justify-content: space-around;
         flex-direction: column;
+
+        @media screen and (min-width: 320px) and (max-width: 768px) {
+            width: 100%;
+            max-width: 480px;
+        }
+
     `,
     FormContent: styled(Form)`
-        width: 80%
+        width: 80%;
     `,
     ButtonLoginContent: styled.div`
         display: flex;
@@ -37,6 +43,24 @@ export const Styled = {
     ButtonContent: styled.div`
         display: flex;
         flex-wrap: wrap;
+        width: 100%;
+
+        button {
+            margin: 0 auto;
+        }
+
+        @media screen and (min-width: 320px) and (max-width: 474px) {
+            flex-direction: column;
+            margin-bottom: 20px;
+            
+            button {
+                margin: 0 auto;
+
+                &:first-child {
+                    margin-bottom: 20px;
+                }
+            }
+        }
     `,
     Error: styled.p`
         align-self: center;
