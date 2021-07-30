@@ -67,7 +67,7 @@ export default function Cards({ name }) {
   return (
     <Styled.Container>
       {!loading && Object.keys(pokemon).length !== 0 && (
-        <Styled.Content onClick={() => setShowModal(true)}>
+        <Styled.Content>
           <Styled.Avatar src={pokemon.image} alt="Imagem Pokemon" />
           <Styled.Title>
             {name && name}
@@ -81,6 +81,7 @@ export default function Cards({ name }) {
           </Styled.ContainerIcon>
           <Styled.Price>
             R$ {pokemon.price}
+            <span onClick={() => setShowModal(true)}>Detalhes +</span>
           </Styled.Price>
           <Styled.Button>
             <Button

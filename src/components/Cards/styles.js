@@ -18,7 +18,7 @@ export const Styled = {
         justify-content: center;
         align-items: center;
     `,
-    Content: styled.button`
+    Content: styled.div`
         position: relative;
         background-color: ${mixins.colors.white};
         border-radius: 15px;
@@ -30,7 +30,6 @@ export const Styled = {
         align-items: center;
         text-align: center;
         align-content: center;
-        cursor: pointer;
         border: none;
     `,
     Loading: styled.div`
@@ -80,6 +79,20 @@ export const Styled = {
         font-family: ${mixins.fonts.semi_bold};
         font-size: ${mixins.typograph.subTitle};
         color: ${mixins.colors.text};
+        text-align: cente;
+
+        span {
+            margin: 10px 0 0;
+            font-size: ${mixins.typograph.form};
+            color: ${mixins.colors.primary};
+            cursor: pointer;
+            border: none;
+            display: block;
+
+            :hover {
+                opacity: .8;
+            }
+        }
     `,
     Button: styled.span`
         text-align: center;
