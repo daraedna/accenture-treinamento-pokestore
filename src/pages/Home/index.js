@@ -6,7 +6,6 @@ import { MdKeyboardArrowLeft } from 'react-icons/md';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 
 import { Styled } from './styles';
-import { mixins } from '../../styles/mixins';
 import Navbar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 

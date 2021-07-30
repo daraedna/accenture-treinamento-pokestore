@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Styled } from './styles';
+import { toast } from 'react-toastify';
 import Button from '../Button';
 import IconType from '../../assets/types';
 
@@ -56,8 +57,11 @@ export default function Cards({ name }) {
     loadPokemon()
   }, []);
 
+  const notify = () => toast.success("Adicionado ao carrinho!");
+
   const handleAddProduct = (product) => {
     addProductToCart(product)
+    notify()
   }
 
   return (
