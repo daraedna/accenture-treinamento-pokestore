@@ -1,27 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { ContainerCard } from './styles';
+import { Styled } from './styles';
 import Button from '../Button';
 import IconType from '../../assets/types';
 
 import { apiPokemon } from '../../services/apiPokemon';
 import { mixins } from '../../styles/mixins';
 import { useCart } from '../../hooks/contexts/CartProvider';
+import ModalPokemon from '../ModalPokemon';
 
 export default function Cards({ name }) {
   const [pokemon, setPokemon] = useState({});
   const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const { addProductToCart } = useCart()
 
   const loadPokemon = async () => {
     setLoading(true);
     try {
       const response = await apiPokemon.get(`/pokemon/${name}/`)
-      const { id, types, sprites, base_experience } = response.data;
+      const {
+        id,
+        types,
+        sprites,
+        base_experience,
+        weight,
+        height
+      } = response.data;
 
       setPokemon({
         id,
         image: sprites.other['official-artwork'].front_default,
         name,
+        weight,
+        height,
         price: `${base_experience},00`,
         priceNumber: `${base_experience}`,
         type: types.map((pokemonType) => {
@@ -50,37 +61,71 @@ export default function Cards({ name }) {
   }
 
   return (
-    <ContainerCard.Container>
+    <Styled.Container>
       {!loading && Object.keys(pokemon).length !== 0 && (
-        <ContainerCard.Content>
-          <ContainerCard.Avatar src={pokemon.image} alt="Imagem Pokemon" />
-          <ContainerCard.Title>
+        <Styled.Content onClick={() => setShowModal(true)}>
+          <Styled.Avatar src={pokemon.image} alt="Imagem Pokemon" />
+          <Styled.Title>
             {name && name}
-          </ContainerCard.Title>
-          <ContainerCard.ContainerIcon>
+          </Styled.Title>
+          <Styled.ContainerIcon>
             {pokemon.type && pokemon.type.map(pokemonType => (
-              <ContainerCard.PokemonType color={pokemonType.color} key={pokemonType.name}>
+              <Styled.PokemonType color={pokemonType.color} key={pokemonType.name}>
                 {pokemonType.icon}
-              </ContainerCard.PokemonType>
+              </Styled.PokemonType>
             ))}
-          </ContainerCard.ContainerIcon>
-          <ContainerCard.Price>
+          </Styled.ContainerIcon>
+          <Styled.Price>
             R$ {pokemon.price}
-          </ContainerCard.Price>
-          <ContainerCard.Button>
+          </Styled.Price>
+          <Styled.Button>
             <Button
               type="primary"
               onClick={() => handleAddProduct(pokemon)}
             >
               Adicionar ao Carrinho
             </Button>
-          </ContainerCard.Button>
-        </ContainerCard.Content>
+          </Styled.Button>
+        </Styled.Content>
       )}
 
       {Object.keys(pokemon).length === 0 && loading && (
-        <ContainerCard.Loading />
+        <Styled.Loading />
       )}
-    </ContainerCard.Container>
+
+      <ModalPokemon
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        title={name}
+      >
+
+        <Styled.ModalContent>
+          <Styled.ModalImg>
+            <Styled.Avatar src={pokemon.image} alt="Imagem Pokemon" />
+          </Styled.ModalImg>
+          <div>
+            <Styled.ModalContent>
+              {pokemon.type && pokemon.type.map(pokemonType => (
+                    <Styled.PokemonTypeModal color={pokemonType.color} key={pokemonType.name}>
+                      {pokemonType.icon}{pokemonType.name}
+                    </Styled.PokemonTypeModal>
+                  ))}
+            </Styled.ModalContent>
+
+            <p>Peso: {pokemon.weight/10} Kg</p>
+            <p>Altura: {pokemon.height/10} M</p>
+            <p>R$ {pokemon.price}</p>
+
+
+          </div>
+        </Styled.ModalContent>
+            <Button
+              type="primary"
+              onClick={() => handleAddProduct(pokemon)}
+            >
+              Adicionar ao carrinho
+            </Button>
+      </ModalPokemon>
+    </Styled.Container>
   )
 }
