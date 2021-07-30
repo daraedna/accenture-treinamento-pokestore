@@ -11,6 +11,7 @@ const CartContext = createContext({});
 function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [cartItemsNumber, setCartItemsNumber] = useState(0);
+  const [totalProductsNumber, setTotalProductsNumber] = useState(0);
 
   /* 
     Se houver carrinho salvo no localStorage, 
@@ -43,6 +44,13 @@ function CartProvider({ children }) {
       localStorage.setItem('@PokeStore:cart', JSON.stringify(cart));
     }
     setCartItemsNumber(cart.length);
+
+    // número de produtos ao todo no carrinho 
+    const totalProducts = cart.reduce((sumTotal, product) => {
+      return sumTotal + product.amount;
+    }, 0);
+
+    setTotalProductsNumber(totalProducts)
   }, [cart, cartPreviousValue]);
 
   const addProductToCart = (item) => {
@@ -119,7 +127,8 @@ function CartProvider({ children }) {
         removeProductFromCart,
         updateProductAmount,
         cartItemsNumber,
-        setEmptyCart
+        setEmptyCart,
+        totalProductsNumber
       }}
     >
       {children}

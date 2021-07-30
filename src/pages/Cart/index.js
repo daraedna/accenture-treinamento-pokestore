@@ -148,23 +148,6 @@ function Cart() {
                           className="trashIcon"
                         />
                       </Styled.DeleteButton>
-                      {/* Delete item modal */}
-                      <ModalComponent
-                        show={showDeleteModal}
-                        onHide={() => setShowDeleteModal(false)}
-                      >
-                        {/* <img src={successCartImg} alt="Compra bem sucedida!" /> */}
-                        <BsExclamationCircle size="30px" color="#EA4335"
-                        />
-                        <h4>Deseja excluir o item do carrinho?</h4>
-                        <Button
-                          type="secondary"
-                          onClick={() => handleRemoveProduct()}
-                        >
-                          Sim, desejo excluir
-                        </Button>
-                      </ModalComponent>
-
                     </td>
                   </Styled.ProductRow>
                 ))}
@@ -175,30 +158,13 @@ function Cart() {
                     <Styled.FootRowContentWrapper>
                       <Button
                         type="primary"
-                        onClick={() => setShowSuccessModal(true)}
-                      >
-                        Finzalizar Pedido
-                      </Button>
-
-                      {/* Success modal */}
-                      <ModalComponent
-                        show={showSuccessModal}
-                        onHide={() => {
-                          setShowSuccessModal(false)
+                        onClick={() => {
+                          setShowSuccessModal(true)
                           setEmptyCart()
                         }}
                       >
-                        <img src={successCartImg} alt="Compra bem sucedida!" />
-                        <h4>Compra finalizada com sucesso!</h4>
-                        <p>Em breve você receberá um
-                          e-mail com todos os detalhes.</p>
-                        <Button
-                          type="primary"
-                          onClick={handleEmptyCart}
-                        >
-                          Voltar para Home
-                        </Button>
-                      </ModalComponent>
+                        Finzalizar Pedido
+                      </Button>
 
                       <Styled.TotalPriceWrapper>
                         <p>Total:</p>
@@ -212,6 +178,37 @@ function Cart() {
           </Styled.TableWrapper>
         </Styled.Content>
       }
+      {/* Delete item modal */}
+      <ModalComponent
+        show={showDeleteModal}
+        onHide={() => setShowDeleteModal(false)}
+      >
+        <BsExclamationCircle size="30px" color="#EA4335"
+        />
+        <h4>Deseja excluir o item do carrinho?</h4>
+        <Button
+          type="secondary"
+          onClick={() => handleRemoveProduct()}
+        >
+          Sim, desejo excluir
+        </Button>
+      </ModalComponent>
+      {/* Success modal */}
+      <ModalComponent
+        show={showSuccessModal}
+        onHide={() => setShowSuccessModal(false)}
+      >
+        <img src={successCartImg} alt="Compra bem sucedida!" />
+        <h4>Compra finalizada com sucesso!</h4>
+        <p>Em breve você receberá um
+          e-mail com todos os detalhes.</p>
+        <Button
+          type="primary"
+          onClick={handleEmptyCart}
+        >
+          Voltar para Home
+        </Button>
+      </ModalComponent>
       <Footer />
     </Styled.Container >
   );

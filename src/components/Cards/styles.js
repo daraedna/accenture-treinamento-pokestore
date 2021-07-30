@@ -11,7 +11,7 @@ const loading = keyframes`
         transform: translateX(100%);
     }
 `
-export const ContainerCard = {
+export const Styled = {
     Container: styled.div`
         height: 350px;
         display: flex;
@@ -24,13 +24,13 @@ export const ContainerCard = {
         border-radius: 15px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
         width: 200px;
-        height: 300px;
+        height: 310px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
         text-align: center;
         align-content: center;
-        cursor: pointer;
+        border: none;
     `,
     Loading: styled.div`
         position: relative;
@@ -38,7 +38,7 @@ export const ContainerCard = {
         border-radius: 15px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
         width: 200px;
-        height: 340px;
+        height: 310px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
@@ -74,11 +74,29 @@ export const ContainerCard = {
         font-size: ${mixins.typograph.title};
         color: ${mixins.colors.text};
         margin-top: 10px;
+        height: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
     `,
     Price: styled.p`
         font-family: ${mixins.fonts.semi_bold};
         font-size: ${mixins.typograph.subTitle};
         color: ${mixins.colors.text};
+        text-align: cente;
+
+        span {
+            margin: 10px 0 0;
+            font-size: ${mixins.typograph.form};
+            color: ${mixins.colors.primary};
+            cursor: pointer;
+            border: none;
+            display: block;
+
+            :hover {
+                opacity: .8;
+            }
+        }
     `,
     Button: styled.span`
         text-align: center;
@@ -118,5 +136,45 @@ export const ContainerCard = {
             font-weight: 500;
             text-transform: capitalize;
         }
+    `,
+
+    //Modal Pokemon
+
+    ModalContent: styled.div`
+        display: flex;
+        flex-direction: row;
+        text-transform: capitalize;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem
+    `,
+
+    ModalImg: styled.div`
+        display: flex;
+        flex-direction: column;
+    `,
+
+    PokemonTypeModal: styled.div`
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 4px;
+        width: 100px;
+        background: ${props => props.color};
+        border-radius: 10px;
+        color: ${mixins.colors.white};
+        margin-bottom: 20px;
+
+        svg {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+
+            path {
+                fill: ${mixins.colors.white};
+            }
+        }
+
     `
 }
