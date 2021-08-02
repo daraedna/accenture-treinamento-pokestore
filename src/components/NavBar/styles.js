@@ -17,6 +17,11 @@ export const Styled = {
     border-bottom: 1px solid ${mixins.colors.card};
     background-color: ${mixins.colors.background};
     right: 0;
+
+    @media screen and (max-width: 576px) {
+      padding: 0px 20px;
+    }
+
   `,
 
   ContainerLogo: styled(Navbar.Brand)`
