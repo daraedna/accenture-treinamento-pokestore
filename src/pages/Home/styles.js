@@ -12,6 +12,7 @@ export const Styled = {
     Content: styled.div`
         width: 90%;
         display: grid;
+        margin-top: 40px;
         flex: 1;
         grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
         justify-content: center;

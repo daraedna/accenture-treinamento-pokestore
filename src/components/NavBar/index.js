@@ -22,7 +22,7 @@ export function Navbar() {
         <Styled.Logo src={Logo} />
       </Styled.ContainerLogo>
       <Styled.NavArea>
-        <Styled.NavButton to={auth ? "/cart" : "/login"}>
+        <Styled.NavButton to="/cart">
           <ShoppingCartOutlinedIcon color={mixins.colors.primary} />
           <Styled.CartLabel>
             {totalProductsNumber}

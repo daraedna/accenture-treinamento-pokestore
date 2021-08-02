@@ -39,7 +39,7 @@ export const mixins = {
         normal: 'Montserrat-Normal',
     },
     typograph: {
-        title: "24px",
+        title: "18px",
         subTitle: "16px",
         paragraph: "12px",
         form: "13px"

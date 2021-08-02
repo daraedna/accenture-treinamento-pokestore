@@ -6,11 +6,9 @@ import { mixins } from "../../styles/mixins";
 export const Styled = {
   Container: styled.div`
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-grow: 1;
     background: ${mixins.colors.background};
 
     h1 {
@@ -58,8 +56,8 @@ export const Styled = {
 
   Content: styled.div`
     width: 100%;
-    height: 80%;
-    flex: 1;
+    height: 100%;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,7 +70,6 @@ export const Styled = {
     margin-bottom: 2rem;
     width: 53rem;
     padding: 2rem;
-    overflow: auto;
     box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
     background-color: ${mixins.colors.white};
 
