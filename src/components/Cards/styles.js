@@ -23,8 +23,8 @@ export const Styled = {
         background-color: ${mixins.colors.white};
         border-radius: 15px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
-        width: 200px;
-        height: 310px;
+        width: 220px;
+        height: 340px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
@@ -37,8 +37,8 @@ export const Styled = {
         background-color: ${mixins.colors.white};
         border-radius: 15px;
         box-shadow: 10px 10px 25px rgba(174, 174, 192, 0.4), -10px -10px 20px #FFFFFF;
-        width: 200px;
-        height: 310px;
+        width: 220px;
+        height: 340px;
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
@@ -64,9 +64,9 @@ export const Styled = {
         }
     `,
     Avatar: styled.img`
-        width: 120px;
-        height: 120px;
-        margin: 0 auto;
+        width: 110px;
+        height: 110px;
+        margin: 24px auto 0px;
     `,
     Title: styled.h1`
         text-transform: capitalize;
@@ -74,14 +74,14 @@ export const Styled = {
         font-size: ${mixins.typograph.title};
         color: ${mixins.colors.text};
         margin-top: 10px;
-        height: 50px;
+        height: 60px;
         overflow: hidden;
         text-overflow: ellipsis;
 
     `,
     Price: styled.p`
         font-family: ${mixins.fonts.semi_bold};
-        font-size: ${mixins.typograph.subTitle};
+        font-size: ${mixins.typograph.title};
         color: ${mixins.colors.text};
         text-align: cente;
 

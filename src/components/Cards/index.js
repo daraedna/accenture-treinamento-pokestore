@@ -8,6 +8,7 @@ import { apiPokemon } from '../../services/apiPokemon';
 import { mixins } from '../../styles/mixins';
 import { useCart } from '../../hooks/contexts/CartProvider';
 import ModalPokemon from '../ModalPokemon';
+import ImgPoke from '../../assets/pokemon.png';
 
 export default function Cards({ name }) {
   const [pokemon, setPokemon] = useState({});
@@ -68,7 +69,7 @@ export default function Cards({ name }) {
     <Styled.Container>
       {!loading && Object.keys(pokemon).length !== 0 && (
         <Styled.Content>
-          <Styled.Avatar src={pokemon.image} alt="Imagem Pokemon" />
+          <Styled.Avatar src={pokemon.image ? pokemon.image : ImgPoke} alt="Imagem Pokemon" />
           <Styled.Title>
             {name && name}
           </Styled.Title>
@@ -106,7 +107,7 @@ export default function Cards({ name }) {
 
         <Styled.ModalContent>
           <Styled.ModalImg>
-            <Styled.Avatar src={pokemon.image} alt="Imagem Pokemon" />
+            <Styled.Avatar src={pokemon.image ? pokemon.image : ImgPoke} alt="Imagem Pokemon" />
           </Styled.ModalImg>
           <div>
             <Styled.ModalContent>
@@ -119,7 +120,9 @@ export default function Cards({ name }) {
 
             <p>Peso: {pokemon.weight/10} Kg</p>
             <p>Altura: {pokemon.height/10} M</p>
-            <p>R$ {pokemon.price}</p>
+            <Styled.Price>
+            R$ {pokemon.price}
+            </Styled.Price>
 
 
           </div>

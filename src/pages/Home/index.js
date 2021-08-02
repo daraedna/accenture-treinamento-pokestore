@@ -64,9 +64,8 @@ function Home() {
   return (
     <>
       <Styled.Container>
-        {loading && <Loading />}
 
-        <Carousel indicators={false}>
+        <Carousel indicators={false} className="w-100">
           <Carousel.Item>
             <img
               className="d-block w-100"
