@@ -8,8 +8,7 @@ export const Styled = {
     width: 100%;
     display: flex;
     flex-direction: column;
-    //align-items: center;
-    //justify-content: center;
+    flex-grow: 1;
     background: ${mixins.colors.background};
 
     h1 {
@@ -57,10 +56,12 @@ export const Styled = {
 
   Content: styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   `,
 
   TableWrapper: styled.div`

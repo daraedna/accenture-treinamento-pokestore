@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { useAuth } from '../hooks/contexts/AuthProvider';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
