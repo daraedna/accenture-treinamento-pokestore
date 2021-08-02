@@ -31,6 +31,7 @@ export default function Routes() {
                         <>
                             <Route path="/" exact component={Home} />
                             <Route path="/home" component={Home} />
+                            <Route path="/cart" component={Cart} />
                             <Route path="/login" component={Login} />
                             <Route path="/404" component={NotFound} />
                         </>

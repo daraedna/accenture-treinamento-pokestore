@@ -12,8 +12,10 @@ import successCartImg from '../../assets/success-cart.svg';
 
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
+import { useAuth } from "../../hooks/contexts/AuthProvider";
 
 function Cart() {
+  const { auth } = useAuth();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [productDeletedId, setProductDeletedId] = useState(0);
@@ -28,6 +30,11 @@ function Cart() {
 
   const history = useHistory();
   const handleClickBackToHome = () => history.push('/home');
+
+  function handleSubmit() {
+    setShowSuccessModal(true);
+    setEmptyCart();
+  }
 
   function handleEmptyCart() {
     handleClickBackToHome();
@@ -156,11 +163,14 @@ function Cart() {
                       <Button
                         type="primary"
                         onClick={() => {
-                          setShowSuccessModal(true)
-                          setEmptyCart()
+                          auth ? (
+                            handleSubmit()
+                          ) : (
+                            history.push("/login")
+                          )
                         }}
                       >
-                        Finzalizar Pedido
+                        Finalizar Pedido
                       </Button>
 
                       <Styled.TotalPriceWrapper>
