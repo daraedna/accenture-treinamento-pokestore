@@ -1,9 +1,10 @@
+import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { mixins } from '../../styles/mixins';
 
 export const Styled = {
-  Navbar: styled.nav`
+  Navbar: styled(Navbar)`
     position: fixed;
     z-index: 1;
     display: flex;
@@ -11,52 +12,51 @@ export const Styled = {
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    height: 80px;
+    min-height: 80px;
     padding: 0px 64px;
     border-bottom: 1px solid ${mixins.colors.card};
     background-color: ${mixins.colors.background};
-
-    @media screen and (max-width: 768px) {
-      padding: 0px 20px;
-    }
-
+    right: 0;
   `,
 
-  ContainerLogo: styled(Link)`
+  ContainerLogo: styled(Navbar.Brand)`
 
   `,
   Logo: styled.img`
   `,
 
-  NavArea: styled.div`
+  NavArea: styled(Navbar.Collapse)`
     display: flex;
     gap: 4rem;
     flex-direction: row;
-    align-items: right;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: flex-end;
 
     @media screen and (max-width: 768px) {
       gap: 2rem;
     }
   `,
 
-  NavButton: styled(Link)`
+  NavButton: styled(Nav.Link)`
     position: relative;
     background: none;
     border: none;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     font-size: 20px;
-    color: ${mixins.colors.primary};
-    :hover {
-      color: ${mixins.colors.text};
+    margin: 0 1rem;
+    svg {
+      color: ${mixins.colors.primary};
+      :hover {
+        color: ${mixins.colors.text};
+      }
     }
   `,
 
   CartLabel: styled.div`
     position: absolute;
-    right: -8px;
-    top: -8px;
+    left: 19px;
+    top: 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -68,12 +68,15 @@ export const Styled = {
     height: 16px;
   `,
 
-  LogOut: styled.button`
+  ToggleLogin: styled.button`
     background: none;
     border: none;
     display: flex;
-    justify-content: center;
-    font-size: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 1rem;
+    font-size: ${mixins.typograph.subTitle};
+    font-family: ${mixins.fonts.semi_bold};
     color: ${mixins.colors.primary};
     :hover {
       color: ${mixins.colors.text};
