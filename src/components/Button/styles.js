@@ -8,7 +8,7 @@ const ButtonPrimary = styled.button`
         border-radius: 20px;
         width: 178px;
         height: 44px;
-        font-size: ${mixins.typograph.paragraph};
+        font-size: ${mixins.typograph.form};
         font-family: ${mixins.fonts.semi_bold};
         margin: 6px;
         transition: 0.3s ease, transform 0.3s ease;
