@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/contexts/AuthProvider';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Profile from '../pages/Profile';
+import Edit from '../pages/Profile/Edit'
 import Cart from '../pages/Cart';
 import NotFound from '../pages/NotFound';
 import { Styled } from './styles';
@@ -24,7 +25,8 @@ export default function Routes() {
                             <Route path="/" exact component={Home} />
                             <Route path="/home" component={Home} />
                             <Route path="/cart" component={Cart} />
-                            <Route path="/profile" component={Profile} />
+                            <Route path="/profile" exact component={Profile} />
+                            <Route path="/profile/edit" component={Edit} />
                             <Route path="/404" component={NotFound} />
                         </>
                         :
