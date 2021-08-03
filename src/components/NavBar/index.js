@@ -27,7 +27,7 @@ export function Navbar() {
         <Styled.Logo src={Logo} />
       </Styled.ContainerLogo>
       <NavbarToggle aria-controls="navbar-nav" />
-      <Styled.NavArea id="navbar-nav">
+      <Styled.NavArea id="navbar-nav" className="justify-content-center justify-content-sm-end">
         <Nav className="py-4">
           <Styled.NavButton href="/home">
             <HomeOutlined color={mixins.colors.primary}/>
