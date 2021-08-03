@@ -4,6 +4,15 @@ import { api } from '../../../services/api/';
 const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
+  const [user, setUser] = useState({
+    id: 0,
+    login: "",
+    name: "",
+    last_name: "",
+    city: "",
+    password: "",
+  });
+
   const [auth, setAuth] = useState(() => {
     const token = sessionStorage.getItem('@Pokestore_login');
 
@@ -40,6 +49,15 @@ function AuthProvider({ children }) {
         setAuth(data[0].access_token);
         api.defaults.headers.Authorization = `Bearer ${data[0].access_token}`;
 
+        setUser({
+          id: data[0].id,
+          login: data[0].login,
+          name: data[0].name,
+          last_name: data[0].last_name,
+          city: data[0].city,
+          password: data[0].password,
+        })
+
       } catch (err) {
         setError('Login e/ou senha inválidos');
       }
@@ -57,7 +75,8 @@ function AuthProvider({ children }) {
         auth,
         error,
         SignIn,
-        SignOut
+        SignOut,
+        user
       }}
     >
       {children}
