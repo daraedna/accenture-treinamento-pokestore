@@ -8,7 +8,7 @@ import { Styled } from './styles';
 import Logo from '../../assets/logo.png';
 import Button from '../../components/Button';
 
-function Login() {
+function Register() {
   const { SignIn, error } = useAuth();
   const history = useHistory();
 
@@ -21,7 +21,7 @@ function Login() {
     onSubmit: async values => {
       //alert(JSON.stringify(values, null, 2));
       await SignIn(values);
-      history.push("/home");
+      history.push("/profile");
     }
   });
 
@@ -33,14 +33,24 @@ function Login() {
     <>
       <Styled.Container>
         <Styled.Content>
-          <Image src={Logo} rounded width={200} className="mt-4" />
+          <Image src={Logo} rounded width={160} className="mt-4" />
           <Styled.FormContent onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-4">
-              <Form.Label>Login</Form.Label>
+              <Form.Label>Nome</Form.Label>
               <Form.Control
                 id="login"
                 name="login"
-                placeholder="Seu login"
+                placeholder="Seu Nome"
+                onChange={formik.handleChange}
+              />
+            </Form.Group>
+            <Form.Group className="mb-4">
+              <Form.Label>E-mail</Form.Label>
+              <Form.Control
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Seu E-mail"
                 onChange={formik.handleChange}
               />
             </Form.Group>
@@ -54,15 +64,23 @@ function Login() {
                 onChange={formik.handleChange}
               />
             </Form.Group>
+            <Form.Group className="mb-4">
+              <Form.Label>Cidade</Form.Label>
+              <Form.Control
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Sua Cidade"
+                onChange={formik.handleChange}
+              />
+            </Form.Group>
             {AppError}
-            <Styled.ButtonLoginContent>
-              <Button type="primary">
-                Fazer login
-              </Button>
-            </Styled.ButtonLoginContent>
             <Styled.ButtonContent>
-              <Button type="secondary" onClick={() => history.push("/register")}>
+              <Button type="primary" onClick={() => history.push("/profile")}>
                 Cadastre-se
+              </Button>
+              <Button type="secondary" onClick={() => history.push("/login")}>
+                Voltar
               </Button>
             </Styled.ButtonContent>
           </Styled.FormContent>
@@ -72,4 +90,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
