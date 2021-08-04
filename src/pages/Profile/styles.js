@@ -12,7 +12,7 @@ export const Styled = {
         align-items: center;
         justify-content:center;
         background-color: ${mixins.colors.background};
-        margin: 30px 0 0 0;
+        margin: 1.5rem 0 0 0;
     `,
     Card_Container: styled.div `
         width: 100%;
@@ -48,7 +48,7 @@ export const Styled = {
         }
     `,
     Content: styled.div `
-    width: 53rem;
+    width: 80%;
     box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
     display: flex;
@@ -61,10 +61,11 @@ export const Styled = {
     @media screen and (min-width: 1024px) {
         display: flex;
         flex-direction: row;
+        margin: 3rem auto
     }
     `,
     Avatar_Container: styled.div `
-        margin: 0 0 3rem 0;
+        margin: 3rem 0 3rem 0;
         img {
         border: 1px solid black;
         border-radius: 100%;
@@ -76,6 +77,7 @@ export const Styled = {
 
         @media screen and (min-width: 1024px) {
             width: 8rem;
+            margin: 2rem auto;
             position: relative;
             top: -90px;
             left: -30px;

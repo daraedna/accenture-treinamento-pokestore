@@ -81,7 +81,6 @@ function Home() {
             />
           </Carousel.Item>
         </Carousel>
-        {loading && <Loading />}
 
         {!loading && pokemons.length !== 0 &&
           <>
@@ -124,7 +123,13 @@ function Home() {
             </Styled.ContainerArrow>
           </>
         }
+
       </Styled.Container>
+      {loading &&
+        <Styled.ContentLoading>
+          <Loading />
+        </Styled.ContentLoading>
+      }
     </>
   )
 }
