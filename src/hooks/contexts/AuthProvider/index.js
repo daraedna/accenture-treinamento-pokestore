@@ -4,15 +4,6 @@ import { api } from '../../../services/api/';
 const AuthContext = createContext({});
 
 function AuthProvider({ children }) {
-  const [user, setUser] = useState({
-    id: 0,
-    login: "",
-    name: "",
-    last_name: "",
-    city: "",
-    password: "",
-  });
-
   const [auth, setAuth] = useState(() => {
     const token = sessionStorage.getItem('@Pokestore_login');
 
@@ -35,18 +26,10 @@ function AuthProvider({ children }) {
         }
         const { data } = await api.post(`/login`, { email: login, password })
 
+        sessionStorage.setItem('@Pokestore_userId', data.user.id);
         sessionStorage.setItem('@Pokestore_login', data.accessToken);
         setAuth(data.accessToken);
         api.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
-
-        setUser({
-          id: data[0].id,
-          login: data[0].login,
-          name: data[0].name,
-          last_name: data[0].last_name,
-          city: data[0].city,
-          password: data[0].password,
-        })
 
       } catch (err) {
         setError(err.response.data);
@@ -68,7 +51,6 @@ function AuthProvider({ children }) {
         error,
         SignIn,
         SignOut,
-        user
       }}
     >
       {children}

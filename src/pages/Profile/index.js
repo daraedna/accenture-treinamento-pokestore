@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Styled } from './styles'
 import profile_img from '../../assets/profile_img.png'
 import Button from '../../components/Button'
@@ -7,20 +7,9 @@ import { useProfile } from '../../hooks/contexts/ProfileProvider';
 
 
 export default function Profile() {
+  const { profile } = useProfile();
 
-  const { getProfile, profile } = useProfile();
-
-  useEffect(() => {
-    const storagedUserId = sessionStorage.getItem('@Pokestore_userId');
-
-    if (storagedUserId) {
-      const id = JSON.parse(storagedUserId);
-
-      getProfile(id);
-    }
-  }, [])
-
-  const { name, login, city } = profile;
+  const { name, email, city } = profile;
 
   const history = useHistory();
 
@@ -45,7 +34,7 @@ export default function Profile() {
 
                 <Styled.Function>
                   <label htmlFor="input2" >E-mail</label>
-                  <p id="input2" readOnly>{login}</p>
+                  <p id="input2" readOnly>{email}</p>
                 </Styled.Function>
 
                 <Styled.Password_Container>

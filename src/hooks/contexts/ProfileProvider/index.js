@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { api } from '../../../services/api';
 
 const UserContext = createContext({});
@@ -6,13 +6,31 @@ const UserContext = createContext({});
 function ProfileProvider({ children }) {
   const [profile, setProfile] = useState({
     id: 0,
-    login: "",
+    email: "",
     name: "",
-    last_name: "",
     city: "",
     password: "",
   });
+
+  const [loggedUserId, setLoggedUserId] = useState(0);
+
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    getLoggedUserId();
+  }, [])
+
+  useEffect(() => {
+    getProfile(loggedUserId);
+  }, [loggedUserId])
+
+  const getLoggedUserId = () => {
+    const storagedUserId = sessionStorage.getItem('@Pokestore_userId');
+
+    const userId = JSON.parse(storagedUserId);
+
+    userId ? setLoggedUserId(userId) : setLoggedUserId(0);
+  }
 
   const getProfile = useCallback(
     async (id) => {
@@ -21,9 +39,8 @@ function ProfileProvider({ children }) {
           const { data } = await api.get(`/users/${id}`);
           setProfile({
             id: data.id,
-            login: data.login,
+            email: data.email,
             name: data.name,
-            last_name: data.last_name,
             city: data.city,
             password: data.password,
           })
@@ -76,6 +93,7 @@ function ProfileProvider({ children }) {
     <UserContext.Provider
       value={{
         profile,
+        loggedUserId,
         getProfile,
         putProfile,
         postProfile,
