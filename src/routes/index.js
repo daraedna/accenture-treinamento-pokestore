@@ -20,24 +20,13 @@ export default function Routes() {
             {!isloginPage && <Navbar />}
             <Styled.PageLayout loginPage={isloginPage}>
                 <Switch>
-                    {auth ?
-                        <>
-                            <Route path="/" exact component={Home} />
-                            <Route path="/home" component={Home} />
-                            <Route path="/cart" component={Cart} />
-                            <Route path="/profile" exact component={Profile} />
-                            <Route path="/profile/edit" component={Edit} />
-                            <Route path="/404" component={NotFound} />
-                        </>
-                        :
-                        <>
-                            <Route path="/" exact component={Home} />
-                            <Route path="/home" component={Home} />
-                            <Route path="/cart" component={Cart} />
-                            <Route path="/login" component={Login} />
-                            <Route path="/404" component={NotFound} />
-                        </>
-                    }
+                    <Route path="/" exact component={Home} />
+                    <Route path="/home" component={Home} />
+                    <Route path="/cart" component={Cart} />
+                    {auth ? <Route path="/profile" exact component={Profile} />  : ''}
+                    {auth ? <Route path="/profile/edit" component={Edit} /> : ''}
+                    <Route path="/login" component={Login} />
+                    <Route component={NotFound} />
                 </Switch>
                 <Footer />
             </Styled.PageLayout>

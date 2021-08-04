@@ -36,4 +36,11 @@ export const Styled = {
         height: 60px;
     `,
 
+    ContentLoading: styled.div`
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-top: 40px;
+        align-items: center;
+    `
 };
