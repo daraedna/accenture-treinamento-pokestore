@@ -24,8 +24,9 @@ function AuthProvider({ children }) {
           setError('Login e senha inválidos');
           return;
         }
-        const { data } = await api.post(`/login`, { email: login, password})
+        const { data } = await api.post(`/login`, { email: login, password })
 
+        sessionStorage.setItem('@Pokestore_userId', data.user.id);
         sessionStorage.setItem('@Pokestore_login', data.accessToken);
         setAuth(data.accessToken);
         api.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
@@ -37,6 +38,8 @@ function AuthProvider({ children }) {
 
   const SignOut = useCallback(
     () => {
+      sessionStorage.removeItem('@Pokestore_userId');
+
       sessionStorage.removeItem('@Pokestore_login');
       setAuth('');
     }, []);
@@ -47,7 +50,7 @@ function AuthProvider({ children }) {
         auth,
         error,
         SignIn,
-        SignOut
+        SignOut,
       }}
     >
       {children}
