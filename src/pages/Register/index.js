@@ -76,9 +76,11 @@ function Register() {
             </Form.Group>
             {AppError}
             <Styled.ButtonContent>
-             
-              <Button type="primary" onclick={() => history.push("/profile")}>
+              <Button type="primary" onClick={() => history.push("/profile")}>
                 Cadastre-se
+              </Button>
+              <Button type="secondary" onClick={() => history.push("/login")}>
+                Voltar
               </Button>
             </Styled.ButtonContent>
           </Styled.FormContent>

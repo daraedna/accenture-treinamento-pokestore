@@ -61,10 +61,7 @@ function Login() {
               </Button>
             </Styled.ButtonLoginContent>
             <Styled.ButtonContent>
-              <Button type="text">
-                Esqueci a senha
-              </Button>
-              <Button type="secondary">
+              <Button type="secondary" onClick={() => history.push("/register")}>
                 Cadastre-se
               </Button>
             </Styled.ButtonContent>
