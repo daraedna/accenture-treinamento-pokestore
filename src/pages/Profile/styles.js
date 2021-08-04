@@ -12,11 +12,11 @@ export const Styled = {
         align-items: center;
         justify-content:center;
         background-color: ${mixins.colors.background};
+        margin: 30px 0 0 0;
     `,
     Card_Container: styled.div `
         width: 100%;
         height:100%;
-        overflow-y: scroll;
         background-color: ${mixins.colors.background};
         h1 {
             color: black;
@@ -39,7 +39,7 @@ export const Styled = {
                 font-size: 32px;
             }
         }
-
+        
         @media screen and (min-width: 1200px) and (max-width: 1600px) {
             background-color: ${mixins.colors.background};
             h1 {
@@ -48,12 +48,15 @@ export const Styled = {
         }
     `,
     Content: styled.div `
-    width: 100%;
+    width: 53rem;
+    box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    background-color: ${mixins.colors.white};
 
     @media screen and (min-width: 1024px) {
         display: flex;
@@ -61,11 +64,11 @@ export const Styled = {
     }
     `,
     Avatar_Container: styled.div `
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 3rem 0;
         img {
         border: 1px solid black;
         border-radius: 100%;
-        width: 4rem;
+        width: 5rem;
 
         @media screen and (min-width: 768px) {
             width: 6rem;
@@ -84,6 +87,7 @@ export const Styled = {
         width: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         gap: 0.7rem;
         
         input {
@@ -160,33 +164,7 @@ export const Styled = {
         width: 100%;
     }
     `,
-    // Sex_Container: styled.div `
-    //    width: 100%;
-    //    display:flex;
-    //    flex-direction: column;
-    //    color: ${mixins.colors.text};
-    //    font-size:${mixins.typograph.form};
-    //     gap: 0.5rem;
-
-    //     @media screen and (min-width: 768px) {
-    //     label {
-    //         font-size:16px;
-    //     }
-    // }
-
-    // @media screen and (min-width: 1024px) {
-    //     label {
-    //         font-size: 19px;
-    //     }
-    // }
-
-    // @media screen and (min-width: 1200px) {
-    //     label {
-    //         font-size: 22px;
-    //     }
-    // }
     
-    // `,
     Origin: styled.div `
        width: 100%;
        display:flex;
@@ -275,23 +253,8 @@ export const Styled = {
     Buttons: styled.div `
         /* width: 100%; */
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: space-evenly;
         gap: 0.5rem;
-
-        @media screen and (min-width: 768px) {
-        button {
-            font-size: 16px;
-            width: 17rem;
-        }
-    }
-
-    @media screen and (min-width: 1024px) {
-        button {
-            font-size: 19px;
-            width: 19rem;
-        }
-    }
 
     @media screen and (min-width: 1200px) {
         display: flex;
@@ -301,10 +264,16 @@ export const Styled = {
             position: relative;
             left: 150px;
             top: 35px;
-            font-size: 22px;
-            width: 21rem;
         }
     }
+    `,
+    /* Estilo específico página Edit */
 
+    Button: styled.div `
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem 0;
     `
 }
