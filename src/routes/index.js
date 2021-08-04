@@ -20,7 +20,7 @@ export default function Routes() {
 
     return (
         <Styled.AppLayout>
-            {!isloginPage || isRegisterPage && <Navbar />}
+            {(!isloginPage && !isRegisterPage) && <Navbar />}
             <Styled.PageLayout loginPage={isloginPage} registerPage={isRegisterPage}>
                 <Switch>
                     <Route path="/" exact component={Home} />
