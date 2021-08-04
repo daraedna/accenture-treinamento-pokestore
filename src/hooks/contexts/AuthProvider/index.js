@@ -24,24 +24,14 @@ function AuthProvider({ children }) {
           setError('Login e senha inválidos');
           return;
         }
-        const { data } = await api.get(`/users?login=${login}`)
+        const { data } = await api.post(`/login`, { email: login, password})
 
-        if (data.leght === 0) {
-          setError('Login e senha inválidos');
-          return;
-        }
-
-        if (data[0].password !== password) {
-          setError('Login e senha inválidos');
-          return;
-        }
-
-        sessionStorage.setItem('@Pokestore_login', data[0].access_token);
-        setAuth(data[0].access_token);
-        api.defaults.headers.Authorization = `Bearer ${data[0].access_token}`;
+        sessionStorage.setItem('@Pokestore_login', data.accessToken);
+        setAuth(data.accessToken);
+        api.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
 
       } catch (err) {
-        setError('Login e/ou senha inválidos');
+        setError(err.response.data);
       }
     }, []);
 
