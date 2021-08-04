@@ -45,6 +45,7 @@ function AuthProvider({ children }) {
           return;
         }
 
+        sessionStorage.setItem('@Pokestore_userId', data[0].id);
         sessionStorage.setItem('@Pokestore_login', data[0].access_token);
         setAuth(data[0].access_token);
         api.defaults.headers.Authorization = `Bearer ${data[0].access_token}`;
@@ -65,6 +66,8 @@ function AuthProvider({ children }) {
 
   const SignOut = useCallback(
     () => {
+      sessionStorage.removeItem('@Pokestore_userId');
+
       sessionStorage.removeItem('@Pokestore_login');
       setAuth('');
     }, []);

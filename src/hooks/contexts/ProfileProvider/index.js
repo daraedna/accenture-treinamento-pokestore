@@ -1,12 +1,9 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useContext, useState, useCallback } from 'react';
 import { api } from '../../../services/api';
-import { useAuth } from "../AuthProvider";
 
 const UserContext = createContext({});
 
 function ProfileProvider({ children }) {
-  const { user } = useAuth();
-
   const [profile, setProfile] = useState({
     id: 0,
     login: "",
@@ -17,23 +14,24 @@ function ProfileProvider({ children }) {
   });
   const [error, setError] = useState('');
 
-
-  const getProfileFromAuth = () => {
-    const { id, login, name, last_name, city, password } = user;
-    setProfile({
-      id,
-      login,
-      name,
-      last_name,
-      city,
-      password
-    })
-  }
-
-  useEffect(() => {
-    user && getProfileFromAuth()
-  }, [user]);
-
+  const getProfile = useCallback(
+    async (id) => {
+      try {
+        if (id > 0) {
+          const { data } = await api.get(`/users/${id}`);
+          setProfile({
+            id: data.id,
+            login: data.login,
+            name: data.name,
+            last_name: data.last_name,
+            city: data.city,
+            password: data.password,
+          })
+        }
+      } catch (err) {
+        setError("Erro ao adqirir as informações do usuário.")
+      }
+    }, []);
 
   const postProfile = useCallback(
     async ({ login, name, last_name, city, password }) => {
@@ -74,15 +72,15 @@ function ProfileProvider({ children }) {
       }
     }, []);
 
-
   return (
     <UserContext.Provider
       value={{
         profile,
-        error,
+        getProfile,
         putProfile,
         postProfile,
-        deleteProfile
+        deleteProfile,
+        error
       }}
     >
       {children}
