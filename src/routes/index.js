@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch, Redirect } from 'react-router-dom';
 import { useAuth } from '../hooks/contexts/AuthProvider';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
@@ -20,16 +20,22 @@ export default function Routes() {
 
     return (
         <Styled.AppLayout>
-            {(!isloginPage && !isRegisterPage) && <Navbar />}
+            <Navbar />
             <Styled.PageLayout loginPage={isloginPage} registerPage={isRegisterPage}>
                 <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/home" component={Home} />
-                    <Route path="/cart" component={Cart} />
-                    <Route path="/register" component={Register} />
+                    <Route path="/home" exact component={Home} />
+                    <Route path="/cart" exact component={Cart} />
+                    <Route path="/register" exact component={Register} />
                     {auth ? <Route path="/profile" exact component={Profile} />  : ''}
-                    {auth ? <Route path="/profile/edit" component={Edit} /> : ''}
-                    <Route path="/login" component={Login} />
+                    {auth ? <Route path="/profile/edit" exact component={Edit} /> : ''}
+                    <Route path="/login" component={Login} exact>
+                        {auth ?
+                            <Redirect to="/home" />
+                            :
+                            <Login />
+                        }
+                    </Route>
                     <Route component={NotFound} />
                 </Switch>
                 <Footer />

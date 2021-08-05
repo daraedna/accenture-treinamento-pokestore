@@ -1,5 +1,4 @@
 import { Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { mixins } from '../../styles/mixins';
 
@@ -12,14 +11,25 @@ export const Styled = {
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    min-height: 80px;
+    min-height: 70px;
     padding: 0px 64px;
     border-bottom: 1px solid ${mixins.colors.card};
     background-color: ${mixins.colors.background};
     right: 0;
 
     @media screen and (max-width: 576px) {
-      padding: 0px 20px;
+      padding: 18px;
+    }
+
+    .navbar-toggler {
+      border-color: ${mixins.colors.primary} !important;
+    }
+
+    .navbar-toggler:focus,
+    .navbar-toggler:active,
+    .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
     }
 
   `,

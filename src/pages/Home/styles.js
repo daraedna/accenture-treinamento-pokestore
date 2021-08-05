@@ -11,6 +11,7 @@ export const Styled = {
 
     Content: styled.div`
         width: 90%;
+        max-width: 1350px;
         display: grid;
         margin-top: 40px;
         flex: 1;

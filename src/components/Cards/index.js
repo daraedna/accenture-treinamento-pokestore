@@ -58,7 +58,9 @@ export default function Cards({ name }) {
     loadPokemon()
   }, []);
 
-  const notify = () => toast.success("Adicionado ao carrinho!");
+  const notify = () => toast.success("Adicionado ao carrinho!", {
+    position: toast.POSITION.BOTTOM_RIGHT,
+  });
 
   const handleAddProduct = (product) => {
     addProductToCart(product)
