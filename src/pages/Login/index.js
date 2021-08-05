@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import { useFormik } from "formik";
 import { useAuth } from '../../hooks/contexts/AuthProvider';
 import { useHistory } from 'react-router-dom';
@@ -9,7 +9,8 @@ import Logo from '../../assets/logo.png';
 import Button from '../../components/Button';
 
 function Login() {
-  const { SignIn, error } = useAuth();
+  const { SignIn, error, loading } = useAuth();
+
   const history = useHistory();
 
   const formik = useFormik({
@@ -19,9 +20,7 @@ function Login() {
     },
 
     onSubmit: async values => {
-      //alert(JSON.stringify(values, null, 2));
-      await SignIn(values);
-      history.push("/home");
+      SignIn(values);
     }
   });
 
@@ -33,31 +32,33 @@ function Login() {
     <>
       <Styled.Container>
         <Styled.Content>
-          <Image src={Logo} rounded width={200} className="mt-4" />
+          <Image src={Logo} rounded width={180} className="mt-4" />
           <Styled.FormContent onSubmit={formik.handleSubmit}>
-            <Form.Group className="mb-4">
-              <Form.Label>Login</Form.Label>
+            <Form.Group className="mb-3">
+              <Form.Label>Email</Form.Label>
               <Form.Control
                 id="login"
                 name="login"
-                placeholder="Seu login"
                 onChange={formik.handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-4">
+            <Form.Group className="mb-2">
               <Form.Label>Senha</Form.Label>
               <Form.Control
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Sua Senha"
                 onChange={formik.handleChange}
               />
             </Form.Group>
             {AppError}
             <Styled.ButtonLoginContent>
-              <Button type="primary">
-                Fazer login
+              <Button type="primary" disabled={loading}>
+                {loading ?
+                  <Spinner animation="border" />
+                  :
+                  'Fazer login'
+                }
               </Button>
             </Styled.ButtonLoginContent>
             <Styled.ButtonContent>
