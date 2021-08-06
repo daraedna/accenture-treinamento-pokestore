@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useRouteMatch } from 'react-router-dom';
 import { useAuth } from '../../hooks/contexts/AuthProvider';
 import { BsExclamationCircle } from "react-icons/bs";
 import HomeOutlined from '@material-ui/icons/HomeOutlined';
@@ -21,6 +21,8 @@ export function Navbar() {
   const { totalProductsNumber } = useCart();
   const history = useHistory();
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const isloginPage = useRouteMatch("/login");
+  const isRegisterPage = useRouteMatch("/register");
 
   const handleClick = () => {
     setShowLogoutModal(true);
@@ -64,6 +66,9 @@ export function Navbar() {
               Sair
             </Styled.ToggleLogin>
             :
+            (isRegisterPage || isloginPage) ?
+            ''
+            :
             <Styled.ToggleLogin onClick={() => history.push("/login")} className="mt-3 mt-sm-0">
               Entrar
             </Styled.ToggleLogin>
@@ -77,7 +82,7 @@ export function Navbar() {
           />
           <h4>Tem certeza que deseja sair?</h4>
           <Button
-            type="secondary"
+            variant="secondary"
             onClick={() => handleLogout()}
           >
             Sim, tenho certeza
