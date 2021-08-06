@@ -16,6 +16,7 @@ function AuthProvider({ children }) {
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   const SignIn = useCallback(
     async ({ login, password }) => {
@@ -25,7 +26,6 @@ function AuthProvider({ children }) {
       try {
         const { data } = await api.post(`/login`, { email: login, password })
         SetToken(data);
-
       } catch (err) {
         if (err.response) {
           setError(err.response.data);

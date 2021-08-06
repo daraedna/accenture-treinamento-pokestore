@@ -56,6 +56,7 @@ function Login() {
               <Button variant="primary" disabled={loading}>
                 {loading ?
                   <Spinner animation="border" size="sm"/>
+
                   :
                   'Fazer login'
                 }
