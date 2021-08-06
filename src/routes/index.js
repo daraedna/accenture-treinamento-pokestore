@@ -18,6 +18,7 @@ export default function Routes() {
     let isloginPage = useRouteMatch("/login");
     let isRegisterPage = useRouteMatch("/register");
 
+    console.log(auth)
     return (
         <Styled.AppLayout>
             <Navbar />
@@ -26,10 +27,9 @@ export default function Routes() {
                     <Route path="/" exact component={Home} />
                     <Route path="/home" exact component={Home} />
                     <Route path="/cart" exact component={Cart} />
-                    <Route path="/register" exact component={Register} />
                     {auth ? <Route path="/profile" exact component={Profile} />  : ''}
                     {auth ? <Route path="/profile/edit" exact component={Edit} /> : ''}
-                    <Route path="/login" component={Login} exact>
+                    <Route path="/login" exact>
                         {auth ?
                             <Redirect to="/home" />
                             :

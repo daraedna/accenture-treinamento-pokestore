@@ -13,6 +13,7 @@ import successCartImg from '../../assets/success-cart.svg';
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
 import { useAuth } from "../../hooks/contexts/AuthProvider";
+import ImgPoke from '../../assets/pokemon.png';
 
 function Cart() {
   const { auth } = useAuth();
@@ -110,7 +111,7 @@ function Cart() {
                 {cart.map(product => (
                   <Styled.ProductRow key={product.id}>
                     <td className="avatar-container">
-                      <img src={product.image} alt="Imagem do Pokémon" />
+                      <img src={product.image ? product.image : ImgPoke} alt="Imagem do Pokémon" />
                     </td>
                     <td className="product-price-container">
                       <Styled.ProductPriceDataCell>

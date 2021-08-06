@@ -21,7 +21,7 @@ function Register() {
     },
 
     onSubmit: async values => {
-      await postProfile(values);
+      postProfile(values);
     }
   });
 
@@ -76,7 +76,7 @@ function Register() {
                 {loading ?
                   <Spinner animation="border" size="sm"/>
                   :
-                  'Cadastra-se'
+                  'Cadastre-se'
                 }
               </Button>
               <Button variant="secondary" onClick={() => history.push("/login")}>
