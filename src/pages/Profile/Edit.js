@@ -1,20 +1,50 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Styled } from './styles'
 import profile_img from '../../assets/profile_img.png'
 import Button from '../../components/Button'
 import { useHistory } from 'react-router-dom';
+import { useProfile } from '../../hooks/contexts/ProfileProvider';
 
 export default function Edit() {
+  const { putProfile, loggedUserId, profile } = useProfile()
 
-const perfil = {
-  name: 'zezinho',
-  email: 'Fulano_42@gmail.com',
-}
+  const [user, setUser] = useState({
+    name: profile.name,
+    email: profile.email,
+    city: profile.city,
+    password: profile.password,
+  });
 
-const [name, setName] = useState(perfil.name)
-const [email, setEmail] = useState(perfil.email)
+  useEffect(() => {
+    loadData()
+  }, [profile])
 
-const history = useHistory();
+  const loadData = async () => {
+    setUser({
+      name: profile.name,
+      email: profile.email,
+      city: profile.city,
+      password: profile.password,
+    })
+  }
+
+  const handleEditUser = (userData) => {
+    console.log(userData)
+    const { email, name, city, password } = userData;
+    putProfile(loggedUserId, email, name, city, password)
+    console.log(loggedUserId)
+    history.push("/profile")
+  }
+
+  /*   
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [city, setCity] = useState('');
+    const [password, setPassword] = useState(''); 
+  */
+
+
+  const history = useHistory();
 
   return (
     <>
@@ -32,31 +62,46 @@ const history = useHistory();
 
                 <Styled.Name_Container>
                   <label htmlFor="input1">Nome</label>
-                  <input id="input1" value={name} onChange={(e) => setName(e.target.value)}/>
+                  <input id="input1" value={user.name} onChange={(e) => setUser({ name: (e.target.value) })} />
                 </Styled.Name_Container>
 
                 <Styled.Function>
                   <label htmlFor="input2" >E-mail</label>
-                  <input id="input2" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                  <input id="input2" value={user.email} onChange={(e) => setUser({ email: (e.target.value) })} />
                 </Styled.Function>
 
                 <Styled.Password_Container>
                   <label htmlFor="input3">Senha</label>
-                  <input id="input3" value="**********"/>
+                  <input
+                    id="input3"
+                    type="password"
+                    value={user.password}
+                    onChange={(e) => setUser({ password: (e.target.value) })}
+                  />
                 </Styled.Password_Container>
 
                 <Styled.Origin>
                   <label>Origem</label>
-                  <select>
-                    <option>Japão</option>
-                    <option>Coréia</option>
-                  </select>
+                  <input
+                    id="city"
+                    type="text"
+                    value={user.city}
+                    onChange={(e) => setUser({ city: (e.target.value) })}
+                  />
                 </Styled.Origin>
 
 
                 <Styled.Buttons>
-                  <Button type="primary">Salvar</Button>
-                  <Button type="secondary" onClick={() => history.push("/profile")} >Cancelar</Button>
+                  <Button
+                    type="primary"
+                    onClick={() => handleEditUser(user)}
+                  >
+                    Salvar
+                  </Button>
+                  <Button
+                    type="secondary"
+                    onClick={() => history.push("/profile")}
+                  >Cancelar</Button>
                 </Styled.Buttons>
 
               </Styled.Form>
