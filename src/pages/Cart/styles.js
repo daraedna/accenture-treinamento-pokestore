@@ -13,7 +13,7 @@ export const Styled = {
 
     h1 {
       margin: 2rem 0;
-      font-weight: 700;
+      font-family: ${mixins.fonts.bold};
       font-size: ${mixins.typograph.title};
       color: ${mixins.colors.text};
       padding: 0.5rem;

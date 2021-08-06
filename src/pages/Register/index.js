@@ -72,14 +72,14 @@ function Register() {
             </Form.Group>
             {AppError}
             <Styled.ButtonContent>
-              <Button type="primary">
+              <Button variant="primary">
                 {loading ?
-                  <Spinner animation="border" />
+                  <Spinner animation="border" size="sm"/>
                   :
                   'Cadastra-se'
                 }
               </Button>
-              <Button type="secondary" onClick={() => history.push("/login")}>
+              <Button variant="secondary" onClick={() => history.push("/login")}>
                 Voltar
               </Button>
             </Styled.ButtonContent>

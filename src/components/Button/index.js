@@ -1,8 +1,8 @@
 import React from 'react';
 import { Styled } from './styles';
 
-export default function Button({children, type, ...props}) {
-    switch (type) {
+export default function Button({children, variant, ...props}) {
+    switch (variant) {
         case "primary":
             return (
                 <Styled.ButtonPrimary {...props}>{children}</Styled.ButtonPrimary >
