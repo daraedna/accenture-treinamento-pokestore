@@ -53,16 +53,16 @@ function Login() {
             </Form.Group>
             {AppError}
             <Styled.ButtonLoginContent>
-              <Button type="primary" disabled={loading}>
+              <Button variant="primary" disabled={loading}>
                 {loading ?
-                  <Spinner animation="border" />
+                  <Spinner animation="border" size="sm"/>
                   :
                   'Fazer login'
                 }
               </Button>
             </Styled.ButtonLoginContent>
             <Styled.ButtonContent>
-              <Button type="secondary" onClick={() => history.push("/register")}>
+              <Button variant="secondary" onClick={() => history.push("/register")}>
                 Cadastre-se
               </Button>
             </Styled.ButtonContent>

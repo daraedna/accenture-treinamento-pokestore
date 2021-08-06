@@ -44,9 +44,4 @@ export const mixins = {
         paragraph: "12px",
         form: "13px"
     },
-    size: {
-        lg: 240,
-        md: 160,
-        sm: 120
-    }
 }

@@ -76,6 +76,7 @@ function ProfileProvider({ children }) {
 
   const patchProfile = useCallback(
     async (id, name, city) => {
+      setLoading(true);
       try {
         await api.patch(`/users/${id}`, {
           name,
@@ -83,6 +84,8 @@ function ProfileProvider({ children }) {
         })
       } catch (err) {
         setError("Erro ao editar usuário.")
+      } finally {
+        setLoading(false);
       }
     }, []);
 
@@ -104,7 +107,8 @@ function ProfileProvider({ children }) {
         patchProfile,
         postProfile,
         deleteProfile,
-        error
+        error,
+        loading
       }}
     >
       {children}

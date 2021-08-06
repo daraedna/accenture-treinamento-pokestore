@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { useProfile } from '../../hooks/contexts/ProfileProvider';
+import { Form, Spinner } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useProfile } from '../../hooks/contexts/ProfileProvider';
 import Button from '../../components/Button'
 
 import profile_img from '../../assets/profile_img.png'
 import { Styled } from './styles';
 
 export default function Edit() {
-  const { patchProfile, getProfile, loggedUserId, profile } = useProfile();
+  const { patchProfile, getProfile, loggedUserId, profile, loading } = useProfile();
 
   const [name, setName] = useState();
   const [city, setCity] = useState();
@@ -24,8 +25,7 @@ export default function Edit() {
 
   }, [profile])
 
-  const handleEditUser = async (event) => {
-    event.preventDefault();
+  const handleEditUser = async () => {
     if (name === '' || city === '') {
       notify();
       return;
@@ -44,56 +44,60 @@ export default function Edit() {
   return (
     <>
       <Styled.Container>
+        <Styled.Title>Editar Perfil</Styled.Title>
         <Styled.Card_Container>
-          <h1 className="profile_text">Editar Perfil</h1>
           <Styled.Content>
 
             <Styled.Avatar_Container>
               <img src={profile_img} />
             </Styled.Avatar_Container>
 
-            <div>
+            <Styled.ContentForm>
               <Styled.Form onSubmit={handleEditUser}>
-                <Styled.Function>
-                  <label htmlFor="email">E-mail</label>
-                  <p id="email">{profile.email}</p>
-                </Styled.Function>
+                <Styled.ItemForm>
+                  <span>E-mail</span>
+                  <p>{profile.email}</p>
+                </Styled.ItemForm>
 
-                <Styled.Name_Container>
-                  <label htmlFor="input1">Nome</label>
-                  <input
-                    id="input1"
+                <Styled.ItemForm>
+                  <label htmlFor="name">Nome</label>
+                  <Form.Control
+                    id="name"
+                    name="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
-                </Styled.Name_Container>
+                </Styled.ItemForm>
 
-                <Styled.Origin>
-                  <label>Origem</label>
-                  <input
+                <Styled.ItemForm>
+                  <label htmlFor="city">Cidade</label>
+                  <Form.Control
                     id="city"
-                    type="text"
+                    name="city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                   />
-                </Styled.Origin>
-
+                </Styled.ItemForm>
+              </Styled.Form>
 
                 <Styled.Buttons>
                   <Button
-                    type="primary"
-                  //onClick={() => handleEditUser(user)}
+                    type="submit"
+                    variant="primary"
+                    onClick={() => handleEditUser()}
                   >
-                    Salvar
+                    {loading ?
+                      <Spinner animation="border" size="sm" />
+                      :
+                      'Salvar'
+                    }
                   </Button>
                   <Button
-                    type="secondary"
+                    variant="secondary"
                     onClick={() => history.push("/profile")}
                   >Cancelar</Button>
                 </Styled.Buttons>
-
-              </Styled.Form>
-            </div>
+            </Styled.ContentForm>
           </Styled.Content>
         </Styled.Card_Container>
       </Styled.Container>
