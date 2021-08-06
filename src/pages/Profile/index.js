@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Styled } from './styles'
 import profile_img from '../../assets/profile_img.png'
 import Button from '../../components/Button'
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../hooks/contexts/ProfileProvider';
 
-
 export default function Profile() {
-  const { profile } = useProfile();
+  const { profile, getProfile, loggedUserId } = useProfile();
 
-  const { name, email, city } = profile;
+  useEffect(() => {
+    setUser({
+      name: profile.name,
+      email: profile.email,
+      city: profile.city,
+    })
+  }, [profile])
+
+
+  const [user, setUser] = useState({
+    name: profile.name,
+    email: profile.email,
+    city: profile.city,
+  })
+  const { name, email, city } = user;
 
   const history = useHistory();
 

@@ -32,7 +32,7 @@ function AuthProvider({ children }) {
         api.defaults.headers.Authorization = `Bearer ${data.accessToken}`
 
       } catch (err) {
-        if(err.response) {
+        if (err.response) {
           setError(err.response.data);
         }
       } finally {
