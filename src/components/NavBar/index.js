@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/contexts/AuthProvider';
+import { BsExclamationCircle } from "react-icons/bs";
 import HomeOutlined from '@material-ui/icons/HomeOutlined';
 import PersonOutlineOutlined from '@material-ui/icons/PersonOutlineOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
@@ -10,15 +11,23 @@ import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
 import { useCart } from '../../hooks/contexts/CartProvider';
 import { Nav } from 'react-bootstrap';
+import ModalComponent from '../Modal';
+import Button from '../Button';
 
 
 export function Navbar() {
   const { auth, SignOut } = useAuth();
   const { totalProductsNumber } = useCart();
   const history = useHistory();
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const handleClick = () => {
+    setShowLogoutModal(true);
+  }
+
+  const handleLogout = () => {
     SignOut();
+    setShowLogoutModal(false);
   }
 
   return (
@@ -30,7 +39,7 @@ export function Navbar() {
       <Styled.NavArea id="navbar-nav" className="justify-content-center justify-content-sm-end">
         <Nav className="py-4">
           <Styled.NavButton href="/home">
-            <HomeOutlined color={mixins.colors.primary}/>
+            <HomeOutlined color={mixins.colors.primary} />
             <p className="mx-3 d-flex d-sm-none">Início</p>
           </Styled.NavButton>
           <Styled.NavButton href="/cart" className="mt-3 mt-sm-0">
@@ -54,6 +63,20 @@ export function Navbar() {
             </Styled.ToggleLogin>
           }
         </Nav>
+        <ModalComponent
+          show={showLogoutModal}
+          onHide={() => setShowLogoutModal(false)}
+        >
+          <BsExclamationCircle size="30px" color="#EA4335"
+          />
+          <h4>Tem certeza que deseja sair?</h4>
+          <Button
+            type="secondary"
+            onClick={() => handleLogout()}
+          >
+            Sim, tenho certeza
+          </Button>
+        </ModalComponent>
       </Styled.NavArea>
     </Styled.Navbar>
   )

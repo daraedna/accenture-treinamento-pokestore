@@ -4,7 +4,7 @@ import { mixins } from "../../styles/mixins";
 
 
 export const Styled = {
-    Container: styled.div `
+    Container: styled.div`
         width: 100%;
         height: 100%;
         display: flex;
@@ -14,7 +14,7 @@ export const Styled = {
         background-color: ${mixins.colors.background};
         margin: 1.5rem 0 0 0;
     `,
-    Card_Container: styled.div `
+    Card_Container: styled.div`
         width: 100%;
         height:100%;
         background-color: ${mixins.colors.background};
@@ -47,7 +47,7 @@ export const Styled = {
             }
         }
     `,
-    Content: styled.div `
+    Content: styled.div`
     width: 80%;
     box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
     margin: 0 auto;
@@ -64,7 +64,7 @@ export const Styled = {
         margin: 3rem auto
     }
     `,
-    Avatar_Container: styled.div `
+    Avatar_Container: styled.div`
         margin: 3rem 0 3rem 0;
         img {
         border: 1px solid black;
@@ -85,7 +85,7 @@ export const Styled = {
     }
     `,
 
-    Form: styled.form `
+    Form: styled.form`
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -137,7 +137,7 @@ export const Styled = {
     }
     `,
 
-    Name_Container: styled.div `
+    Name_Container: styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -166,8 +166,8 @@ export const Styled = {
         width: 100%;
     }
     `,
-    
-    Origin: styled.div `
+
+    Origin: styled.div`
        width: 100%;
        display:flex;
        flex-direction: column;
@@ -193,7 +193,7 @@ export const Styled = {
         }
     }
     `,
-    Function: styled.div `
+    Function: styled.div`
        width: 100%;
        display:flex;
        flex-direction: column;
@@ -221,7 +221,7 @@ export const Styled = {
     }
     `,
 
-    Password_Container: styled.div `
+    Password_Container: styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -252,7 +252,7 @@ export const Styled = {
 
     `,
 
-    Buttons: styled.div `
+    Buttons: styled.div`
         /* width: 100%; */
         display: flex;
         justify-content: space-evenly;
@@ -271,7 +271,7 @@ export const Styled = {
     `,
     /* Estilo específico página Edit */
 
-    Button: styled.div `
+    Button: styled.div`
         width: 100%;
         display: flex;
         justify-content: center;
