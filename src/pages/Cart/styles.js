@@ -40,18 +40,6 @@ export const Styled = {
         }
       }
     }
-
-    // retirando as arrows do input number
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
   `,
 
   Content: styled.div`
@@ -175,6 +163,7 @@ export const Styled = {
     border: 1px solid #DDDDDD;
     border-radius: 5px;
     color: ${mixins.colors.text};
+    outline: transparent;
 
     @media screen and (min-width: 320px) and (max-width: 768px) {
       height: 2rem;

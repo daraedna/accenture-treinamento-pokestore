@@ -1,7 +1,6 @@
 import {
   createContext,
   useContext,
-  useRef,
   useState,
   useEffect
 } from 'react';
@@ -26,23 +25,13 @@ function CartProvider({ children }) {
     }
   }, [])
 
-  const previousCartRef = useRef();
-
   useEffect(() => {
-    previousCartRef.current = cart;
-  });
-
-  // Se o previousCartRef for null/undefined, retornará o cart
-  const cartPreviousValue = previousCartRef ?? cart;
-
-  /* 
-    Inserindo o carrinho atualizado no localStorage.
-    Setando o numero de itens do carrinho
-  */
-  useEffect(() => {
-    if (cartPreviousValue !== cart) {
+    // Inserindo o carrinho atualizado no localStorage.
+    if (cart) {
       localStorage.setItem('@PokeStore:cart', JSON.stringify(cart));
     }
+
+    // número de itens ao todo no carrinho 
     setCartItemsNumber(cart.length);
 
     // número de produtos ao todo no carrinho 
@@ -51,7 +40,7 @@ function CartProvider({ children }) {
     }, 0);
 
     setTotalProductsNumber(totalProducts)
-  }, [cart, cartPreviousValue]);
+  }, [cart]);
 
   const addProductToCart = (item) => {
     try {
