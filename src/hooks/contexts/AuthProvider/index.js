@@ -16,7 +16,6 @@ function AuthProvider({ children }) {
 
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
 
   const SignIn = useCallback(
     async ({ login, password }) => {
@@ -25,11 +24,7 @@ function AuthProvider({ children }) {
 
       try {
         const { data } = await api.post(`/login`, { email: login, password })
-
-        sessionStorage.setItem('@Pokestore_userId', data.user.id);
-        sessionStorage.setItem('@Pokestore_login', data.accessToken);
-        setAuth(data.accessToken)
-        api.defaults.headers.Authorization = `Bearer ${data.accessToken}`
+        SetToken(data);
 
       } catch (err) {
         if(err.response) {
@@ -48,6 +43,14 @@ function AuthProvider({ children }) {
       setAuth('');
     }, []);
 
+  const SetToken = useCallback(
+    (data) => {
+      sessionStorage.setItem('@Pokestore_userId', data.user.id);
+      sessionStorage.setItem('@Pokestore_login', data.accessToken);
+      setAuth(data.accessToken);
+      api.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
+    }, []);
+
   return (
     <AuthContext.Provider
       value={{
@@ -56,6 +59,7 @@ function AuthProvider({ children }) {
         loading,
         SignIn,
         SignOut,
+        SetToken
       }}
     >
       {children}

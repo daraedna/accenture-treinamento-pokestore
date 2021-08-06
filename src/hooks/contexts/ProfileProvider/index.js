@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { api } from '../../../services/api';
+import { useAuth } from '../AuthProvider';
 
 const UserContext = createContext({});
 
 function ProfileProvider({ children }) {
+  const { SetToken } = useAuth();
+
   const [profile, setProfile] = useState({
     id: 0,
     email: "",
@@ -15,6 +18,7 @@ function ProfileProvider({ children }) {
   const [loggedUserId, setLoggedUserId] = useState(0);
 
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getLoggedUserId();
@@ -52,15 +56,21 @@ function ProfileProvider({ children }) {
 
   const postProfile = useCallback(
     async ({ name, email, password, city }) => {
+      setLoading(true);
       try {
-        await api.post('/users', {
+        const { data } = await api.post('/users', {
           name,
           email,
           password,
           city,
-        })
+        });
+        SetToken(data);
       } catch (err) {
-        setError("Erro ao cadastrar usuário usuário.")
+        if(err.response) {
+          setError(err.response.data);
+        }
+      } finally {
+        setLoading(false);
       }
     }, []);
 

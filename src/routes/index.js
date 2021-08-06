@@ -26,7 +26,6 @@ export default function Routes() {
                     <Route path="/" exact component={Home} />
                     <Route path="/home" exact component={Home} />
                     <Route path="/cart" exact component={Cart} />
-                    <Route path="/register" exact component={Register} />
                     {auth ? <Route path="/profile" exact component={Profile} />  : ''}
                     {auth ? <Route path="/profile/edit" exact component={Edit} /> : ''}
                     <Route path="/login" component={Login} exact>
@@ -34,6 +33,13 @@ export default function Routes() {
                             <Redirect to="/home" />
                             :
                             <Login />
+                        }
+                    </Route>
+                    <Route path="/register" component={Register} exact>
+                        {auth ?
+                            <Redirect to="/home" />
+                            :
+                            <Register />
                         }
                     </Route>
                     <Route component={NotFound} />

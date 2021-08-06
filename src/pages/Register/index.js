@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
-import { Form } from "react-bootstrap";
+import { Form, Spinner } from "react-bootstrap";
 import { useFormik } from "formik";
-//import { useAuth } from '../../hooks/contexts/AuthProvider';
 import { useHistory } from 'react-router-dom';
 import Image from 'react-bootstrap/Image';
 import { Styled } from './styles';
@@ -10,7 +9,7 @@ import Button from '../../components/Button';
 import { useProfile } from '../../hooks/contexts/ProfileProvider';
 
 function Register() {
-  const { postProfile, error } = useProfile();
+  const { postProfile, error, loading } = useProfile();
   const history = useHistory();
 
   const formik = useFormik({
@@ -22,10 +21,7 @@ function Register() {
     },
 
     onSubmit: async values => {
-      //alert(JSON.stringify(values, null, 2));
       await postProfile(values);
-      //await SignIn(values);
-      history.push("/");
     }
   });
 
@@ -37,51 +33,51 @@ function Register() {
     <>
       <Styled.Container>
         <Styled.Content>
-          <Image src={Logo} rounded width={160} className="mt-4" />
+          <Image src={Logo} rounded width={140} className="mt-4" />
           <Styled.FormContent onSubmit={formik.handleSubmit}>
-            <Form.Group className="mb-4">
+            <Form.Group className="mb-2">
               <Form.Label>Nome</Form.Label>
               <Form.Control
                 id="name"
                 name="name"
-                placeholder="Seu Nome"
                 onChange={formik.handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-4">
+            <Form.Group className="mb-2">
               <Form.Label>E-mail</Form.Label>
               <Form.Control
                 id="email"
                 name="email"
                 type="email"
-                placeholder="Seu E-mail"
                 onChange={formik.handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-4">
+            <Form.Group className="mb-2">
               <Form.Label>Senha</Form.Label>
               <Form.Control
                 id="password"
                 name="password"
                 type="password"
-                placeholder="Sua Senha"
                 onChange={formik.handleChange}
               />
             </Form.Group>
-            <Form.Group className="mb-4">
+            <Form.Group className="mb-2">
               <Form.Label>Cidade</Form.Label>
               <Form.Control
                 id="city"
                 name="city"
                 type="text"
-                placeholder="Sua Cidade"
                 onChange={formik.handleChange}
               />
             </Form.Group>
             {AppError}
             <Styled.ButtonContent>
               <Button type="primary">
-                Cadastre-se
+                {loading ?
+                  <Spinner animation="border" />
+                  :
+                  'Cadastra-se'
+                }
               </Button>
               <Button type="secondary" onClick={() => history.push("/login")}>
                 Voltar
