@@ -11,15 +11,14 @@ export const Styled = {
     justify-content: space-between;
     flex-direction: row;
     width: 100%;
-    height: 70px;
+    min-height: 70px;
     padding: 0px 64px;
     border-bottom: 1px solid ${mixins.colors.card};
     background-color: ${mixins.colors.background};
     right: 0;
 
     @media screen and (max-width: 576px) {
-      padding: 12px 16px;
-      height: auto;
+      padding: 18px;
     }
 
     .navbar-toggler {
