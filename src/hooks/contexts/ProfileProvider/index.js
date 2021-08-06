@@ -51,14 +51,13 @@ function ProfileProvider({ children }) {
     }, []);
 
   const postProfile = useCallback(
-    async ({ login, name, last_name, city, password }) => {
+    async ({ name, email, password, city }) => {
       try {
         await api.post('/users', {
-          login,
           name,
-          last_name,
+          email,
+          password,
           city,
-          password
         })
       } catch (err) {
         setError("Erro ao cadastrar usuário usuário.")
@@ -66,14 +65,13 @@ function ProfileProvider({ children }) {
     }, []);
 
   const putProfile = useCallback(
-    async ({ id, login, name, last_name, city, password }) => {
+    async (id, email, name, city, password) => {
       try {
         await api.put(`/users/${id}`, {
-          login,
+          email,
           name,
-          last_name,
           city,
-          password
+          password,
         })
       } catch (err) {
         setError("Erro ao editar usuário.")
