@@ -1,66 +1,103 @@
-import React, {useState} from 'react';
-import { Styled } from './styles'
-import profile_img from '../../assets/profile_img.png'
-import Button from '../../components/Button'
+import React, { useEffect, useState } from 'react';
+import { Form, Spinner } from "react-bootstrap";
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useProfile } from '../../hooks/contexts/ProfileProvider';
+import Button from '../../components/Button'
+
+import profile_img from '../../assets/profile_img.png'
+import { Styled } from './styles';
 
 export default function Edit() {
+  const { patchProfile, getProfile, loggedUserId, profile, loading } = useProfile();
 
-const perfil = {
-  name: 'zezinho',
-  email: 'Fulano_42@gmail.com',
-}
+  const [name, setName] = useState();
+  const [city, setCity] = useState();
 
-const [name, setName] = useState(perfil.name)
-const [email, setEmail] = useState(perfil.email)
+  useEffect(() => {
 
-const history = useHistory();
+    setName(profile.name);
+    setCity(profile.city);
+
+    return () => {
+      getProfile(loggedUserId)
+    }
+
+  }, [profile])
+
+  const handleEditUser = async () => {
+    if (name === '' || city === '') {
+      notify();
+      return;
+    } else {
+      await patchProfile(loggedUserId, name, city);
+      history.push("/profile")
+    }
+  }
+
+  const notify = () => toast.error("Digite nome e cidade corretamente!", {
+    position: toast.POSITION.BOTTOM_RIGHT,
+  });
+
+  const history = useHistory();
 
   return (
     <>
       <Styled.Container>
+        <Styled.Title>Editar Perfil</Styled.Title>
         <Styled.Card_Container>
-          <h1 className="profile_text">Editar Perfil</h1>
           <Styled.Content>
 
             <Styled.Avatar_Container>
               <img src={profile_img} />
             </Styled.Avatar_Container>
 
-            <div>
-              <Styled.Form onSubmit="">
+            <Styled.ContentForm>
+              <Styled.Form onSubmit={handleEditUser}>
+                <Styled.ItemForm>
+                  <span>E-mail</span>
+                  <p>{profile.email}</p>
+                </Styled.ItemForm>
 
-                <Styled.Name_Container>
-                  <label htmlFor="input1">Nome</label>
-                  <input id="input1" value={name} onChange={(e) => setName(e.target.value)}/>
-                </Styled.Name_Container>
+                <Styled.ItemForm>
+                  <label htmlFor="name">Nome</label>
+                  <Form.Control
+                    id="name"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </Styled.ItemForm>
 
-                <Styled.Function>
-                  <label htmlFor="input2" >E-mail</label>
-                  <input id="input2" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                </Styled.Function>
-
-                <Styled.Password_Container>
-                  <label htmlFor="input3">Senha</label>
-                  <input id="input3" value="**********"/>
-                </Styled.Password_Container>
-
-                <Styled.Origin>
-                  <label>Origem</label>
-                  <select>
-                    <option>Japão</option>
-                    <option>Coréia</option>
-                  </select>
-                </Styled.Origin>
-
+                <Styled.ItemForm>
+                  <label htmlFor="city">Cidade</label>
+                  <Form.Control
+                    id="city"
+                    name="city"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                  />
+                </Styled.ItemForm>
+              </Styled.Form>
 
                 <Styled.Buttons>
-                  <Button type="primary">Salvar</Button>
-                  <Button type="secondary" onClick={() => history.push("/profile")} >Cancelar</Button>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    onClick={() => handleEditUser()}
+                  >
+                    {loading ?
+                      <Spinner animation="border" size="sm" />
+                      :
+                      'Salvar'
+                    }
+                  </Button>
+                  <Button
+                    variant="secondary"
+                    onClick={() => history.push("/profile")}
+                  >Cancelar</Button>
                 </Styled.Buttons>
-
-              </Styled.Form>
-            </div>
+            </Styled.ContentForm>
           </Styled.Content>
         </Styled.Card_Container>
       </Styled.Container>

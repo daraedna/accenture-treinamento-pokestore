@@ -1,22 +1,35 @@
-import React from 'react';
-import { Styled } from './styles'
-import profile_img from '../../assets/profile_img.png'
-import Button from '../../components/Button'
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../hooks/contexts/ProfileProvider';
-
+import Button from '../../components/Button';
+import profile_img from '../../assets/profile_img.png';
+import { Styled } from './styles';
 
 export default function Profile() {
   const { profile } = useProfile();
 
-  const { name, email, city } = profile;
+  useEffect(() => {
+    setUser({
+      name: profile.name,
+      email: profile.email,
+      city: profile.city,
+    })
+  }, [profile])
+
+
+  const [user, setUser] = useState({
+    name: profile.name,
+    email: profile.email,
+    city: profile.city,
+  })
+  const { name, email, city } = user;
 
   const history = useHistory();
 
   return (
     <>
       <Styled.Container>
-        <h1 className="profile_text">Meu perfil</h1>
+        <Styled.Title>Meu perfil</Styled.Title>
         <Styled.Card_Container>
           <Styled.Content>
 
@@ -24,36 +37,30 @@ export default function Profile() {
               <img src={profile_img} />
             </Styled.Avatar_Container>
 
-            <div>
+            <Styled.ContentForm>
               <Styled.Form onSubmit="">
+                <Styled.ItemForm>
+                  <span>E-mail</span>
+                  <p>{email}</p>
+                </Styled.ItemForm>
 
-                <Styled.Name_Container>
-                  <label htmlFor="input1">Nome</label>
-                  <p id="input1" readOnly>{name}</p>
-                </Styled.Name_Container>
+                <Styled.ItemForm>
+                  <span>Nome</span>
+                  <p>{name}</p>
+                </Styled.ItemForm>
 
-                <Styled.Function>
-                  <label htmlFor="input2" >E-mail</label>
-                  <p id="input2" readOnly>{email}</p>
-                </Styled.Function>
-
-                <Styled.Password_Container>
-                  <label htmlFor="input3">Senha</label>
-                  <p id="input3" readOnly >*************</p>
-                </Styled.Password_Container>
-
-                <Styled.Origin>
-                  <label>Origem</label>
+                <Styled.ItemForm>
+                  <span>Cidade</span>
                   <p>{city}</p>
-                </Styled.Origin>
+                </Styled.ItemForm>
 
               </Styled.Form>
 
-
               <Styled.Button>
-                <Button type="primary" onClick={() => history.push("/profile/edit")} >Editar</Button>
+                <Button variant="primary" onClick={() => history.push("/profile/edit")} >Editar</Button>
               </Styled.Button>
-            </div>
+
+            </Styled.ContentForm>
           </Styled.Content>
         </Styled.Card_Container>
       </Styled.Container>

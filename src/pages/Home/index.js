@@ -86,7 +86,7 @@ function Home() {
           <>
             <Styled.Content>
               {pokemons.map((pokemon) => (
-                <Cards name={pokemon.name} />
+                <Cards name={pokemon.name} key={pokemon.name}/>
               ))}
 
             </Styled.Content>

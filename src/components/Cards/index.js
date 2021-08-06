@@ -88,7 +88,7 @@ export default function Cards({ name }) {
           </Styled.Price>
           <Styled.Button>
             <Button
-              type="primary"
+              variant="primary"
               onClick={() => handleAddProduct(pokemon)}
             >
               Adicionar ao Carrinho
@@ -130,7 +130,7 @@ export default function Cards({ name }) {
           </div>
         </Styled.ModalContent>
             <Button
-              type="primary"
+              variant="primary"
               onClick={() => handleAddProduct(pokemon)}
             >
               Adicionar ao carrinho

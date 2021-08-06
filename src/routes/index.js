@@ -36,6 +36,13 @@ export default function Routes() {
                             <Login />
                         }
                     </Route>
+                    <Route path="/register" component={Register} exact>
+                        {auth ?
+                            <Redirect to="/home" />
+                            :
+                            <Register />
+                        }
+                    </Route>
                     <Route component={NotFound} />
                 </Switch>
                 <Footer />

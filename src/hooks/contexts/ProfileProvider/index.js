@@ -1,9 +1,12 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { api } from '../../../services/api';
+import { useAuth } from '../AuthProvider';
 
 const UserContext = createContext({});
 
 function ProfileProvider({ children }) {
+  const { SetToken } = useAuth();
+
   const [profile, setProfile] = useState({
     id: 0,
     email: "",
@@ -15,6 +18,7 @@ function ProfileProvider({ children }) {
   const [loggedUserId, setLoggedUserId] = useState(0);
 
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getLoggedUserId();
@@ -51,32 +55,37 @@ function ProfileProvider({ children }) {
     }, []);
 
   const postProfile = useCallback(
-    async ({ login, name, last_name, city, password }) => {
+    async ({ name, email, password, city }) => {
+      setLoading(true);
       try {
-        await api.post('/users', {
-          login,
+        const { data } = await api.post('/users', {
           name,
-          last_name,
+          email,
+          password,
           city,
-          password
-        })
+        });
+        SetToken(data);
       } catch (err) {
-        setError("Erro ao cadastrar usuário usuário.")
+        if(err.response) {
+          setError(err.response.data);
+        }
+      } finally {
+        setLoading(false);
       }
     }, []);
 
-  const putProfile = useCallback(
-    async ({ id, login, name, last_name, city, password }) => {
+  const patchProfile = useCallback(
+    async (id, name, city) => {
+      setLoading(true);
       try {
-        await api.put(`/users/${id}`, {
-          login,
+        await api.patch(`/users/${id}`, {
           name,
-          last_name,
           city,
-          password
         })
       } catch (err) {
         setError("Erro ao editar usuário.")
+      } finally {
+        setLoading(false);
       }
     }, []);
 
@@ -95,10 +104,11 @@ function ProfileProvider({ children }) {
         profile,
         loggedUserId,
         getProfile,
-        putProfile,
+        patchProfile,
         postProfile,
         deleteProfile,
-        error
+        error,
+        loading
       }}
     >
       {children}

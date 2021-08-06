@@ -15,7 +15,7 @@ export const Styled = {
     height: 100%;
     display: flex;
     flex-direction: column;
-    margin-top: ${props => !props.loginPage && !props.registerPage ? "80px" : "0"};
+    margin-top: ${props => !props.loginPage && !props.registerPage ? "70px" : "0"};
     overflow: auto;
 `,
 }

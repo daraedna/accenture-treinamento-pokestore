@@ -84,7 +84,7 @@ function Cart() {
         <Styled.Content>
           <h1>Seu carrinho está vazio =(</h1>
           <Button
-            type="primary"
+            variant="primary"
             onClick={handleClickBackToHome}
           >
             Voltar para Home
@@ -161,7 +161,7 @@ function Cart() {
                   <td className="foot-row" colSpan="5">
                     <Styled.FootRowContentWrapper>
                       <Button
-                        type="primary"
+                        variant="primary"
                         onClick={() => {
                           auth ? (
                             handleSubmit()
@@ -194,7 +194,7 @@ function Cart() {
         />
         <h4>Deseja excluir o item do carrinho?</h4>
         <Button
-          type="secondary"
+          variant="secondary"
           onClick={() => handleRemoveProduct()}
         >
           Sim, desejo excluir
@@ -210,7 +210,7 @@ function Cart() {
         <p>Em breve você receberá um
           e-mail com todos os detalhes.</p>
         <Button
-          type="primary"
+          variant="primary"
           onClick={handleEmptyCart}
         >
           Voltar para Home

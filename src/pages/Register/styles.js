@@ -6,7 +6,7 @@ import bg from '../../assets/bg.gif';
 export const Styled = {
     Container: styled.div`
         width: 100%;
-        height: 100vh;
+        height: 100%;
         background: url(${bg}) no-repeat;
         background-size: cover;
         display: flex;
@@ -16,7 +16,8 @@ export const Styled = {
     `,
     Content: styled.div`
         width: 30rem;
-        height: 33rem;
+        height: 30rem;
+        margin-top: 5rem;
         box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         background: ${mixins.colors.white};
@@ -26,17 +27,26 @@ export const Styled = {
         flex-direction: column;
 
         @media screen and (min-width: 320px) and (max-width: 768px) {
-            width: 100%;
-            max-width: 480px;
+            width: 95%;
+            max-width: 450px;
+            margin-bottom: 1rem;
+
         }
+    `,
+    Title: styled.h1`
+        font-size: ${mixins.typograph.title};
+        color: ${mixins.colors.primary};
+        margin: 1rem;
+    `,
+    Subtitle: styled.h2`
+        display: inline;
+        font-size: ${mixins.typograph.form};
+        color: ${mixins.colors.text}
     `,
     FormContent: styled(Form)`
         width: 80%;
-    `,
-    ButtonLoginContent: styled.div`
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
+        flex: 1;
+        margin-top: 2rem;
     `,
     ButtonContent: styled.div`
         display: flex;
@@ -44,25 +54,22 @@ export const Styled = {
         width: 100%;
 
         button {
-            margin: 0 auto;
+            margin: 10px auto 0;
         }
 
         @media screen and (min-width: 320px) and (max-width: 474px) {
             flex-direction: column;
-            margin-bottom: 20px;
-            
-            button {
-                margin: 0 auto;
+            margin-bottom: 5px;
 
-                &:first-child {
-                    margin-bottom: 20px;
-                }
+            button {
+                margin: 10px auto 5px;
             }
         }
     `,
     Error: styled.p`
         align-self: center;
         justify-self: center;
+        margin: 0;
         color: ${mixins.colors.red};
         font-family: ${mixins.fonts.semi_bold};
         font-weight: ${mixins.typograph.paragraph};
