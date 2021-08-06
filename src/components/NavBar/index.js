@@ -32,6 +32,7 @@ export function Navbar() {
     SignOut();
     setShowLogoutModal(false);
     notify();
+    history.push("/home");
   }
 
   const notify = () => toast.success("Já estamos com saudades!", {

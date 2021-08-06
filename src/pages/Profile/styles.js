@@ -18,7 +18,7 @@ export const Styled = {
             margin: 2rem 0;
         }
         @media screen and (max-width: 768px) {
-            margin: 2rem 0 10rem;
+            margin: 2rem 0 6rem;
         }
     `,
 
