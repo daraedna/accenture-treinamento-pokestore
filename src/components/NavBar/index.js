@@ -6,6 +6,7 @@ import HomeOutlined from '@material-ui/icons/HomeOutlined';
 import PersonOutlineOutlined from '@material-ui/icons/PersonOutlineOutlined';
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
+import { toast } from 'react-toastify';
 import Logo from '../../assets/small-logo.png'
 import { Styled } from './styles';
 import { mixins } from "../../styles/mixins";
@@ -28,7 +29,12 @@ export function Navbar() {
   const handleLogout = () => {
     SignOut();
     setShowLogoutModal(false);
+    notify();
   }
+
+  const notify = () => toast.success("Já estamos com saudades!", {
+    position: toast.POSITION.BOTTOM_RIGHT,
+  });
 
   return (
     <Styled.Navbar expand="sm">
