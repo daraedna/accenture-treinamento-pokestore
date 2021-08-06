@@ -74,14 +74,12 @@ function ProfileProvider({ children }) {
       }
     }, []);
 
-  const putProfile = useCallback(
-    async (id, email, name, city, password) => {
+  const patchProfile = useCallback(
+    async (id, name, city) => {
       try {
-        await api.put(`/users/${id}`, {
-          email,
+        await api.patch(`/users/${id}`, {
           name,
           city,
-          password,
         })
       } catch (err) {
         setError("Erro ao editar usuário.")
@@ -103,7 +101,7 @@ function ProfileProvider({ children }) {
         profile,
         loggedUserId,
         getProfile,
-        putProfile,
+        patchProfile,
         postProfile,
         deleteProfile,
         error

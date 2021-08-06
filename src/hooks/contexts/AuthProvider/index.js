@@ -27,7 +27,7 @@ function AuthProvider({ children }) {
         SetToken(data);
 
       } catch (err) {
-        if(err.response) {
+        if (err.response) {
           setError(err.response.data);
         }
       } finally {
